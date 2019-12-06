@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Bowlby+One+SC&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Merienda&display=swap');
+*{
+	box-sizing: border-box; 
+	margin: 0px;
+	padding: 0px;
+}
+
+.borde{
+	border: 1px solid gray;	
+}
+
+.caja-Iz{
+width: 135vh;
+height:100vh;
+float: left;
+padding-left: 0px;
+}
+.caja-Iz img{
+	 width: 135vh;
+	 height: 100vh;
+}
+
+
+.contenedorDerecha{
+	width: 69.4vh;
+	height: 85vh;
+	float: left;
+	padding-top: 30px;
+	padding-left: 10px;
+}
+.fuenteTxt{
+	font-family: 'Bowlby One SC', cursive;
+}
+.lineaTxt{
+	border-bottom:2px solid #0F796F;
+	border-radius: 100%;
+}
+.linea{
+	border-bottom: 1px solid #BBBBBB;
+}
+
+.textoImagen{
+	position: absolute;
+	top: 180px;
+	left:70px;
+	color: white;
+	font-family: 'Russo One', sans-serif;
+	font-size: 80px;
+	border-bottom: 2px solid white;
+	animation: ease-in;
+}
+
+.textoImagen2{
+	position: absolute;
+	font-family: 'Merienda', cursive;
+	top: 300px;
+	left: 70px;
+	color: white;
+	font-size: 40px;
+}
+.sinBordeCaja{
+	border: 0.5px;
+	border-bottom: solid #0F796F;
+}
+.botonVolver{
+	border-radius: 100%;
+	width: 40px;
+}
