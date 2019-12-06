@@ -43,12 +43,14 @@ public class supervisorController {
     private Alumno alumno;
 
     @EJB
-    private EspecialidadFacadeLocal estadoAFL;
+    private EstadoUsuarioFacadeLocal estadoAFL;
     private EstadoUsuario estado;
 
     @EJB
     private CategoriaDeportivaFacadeLocal categroiaDFL;
     private CategoriaDeportiva categoriaD;
+
+    private archivosController archivos;
 
     @EJB
     private AlumnoHasTorneoFacadeLocal alumnoTorneoFL;
@@ -62,6 +64,7 @@ public class supervisorController {
         usuario = new Usuario();
         alumno = new Alumno();
         alumnoTorneo = new AlumnoHasTorneo();
+        archivos = new archivosController();
 
         listaLugarTorneo = lugarToneoFL.findAll();
     }
@@ -161,6 +164,14 @@ public class supervisorController {
         this.alumnoTorneo = alumnoTorneo;
     }
 
+    public archivosController getArchivos() {
+        return archivos;
+    }
+
+    public void setArchivos(archivosController archivos) {
+        this.archivos = archivos;
+    }
+
     //Metodos:
     //Metodo de iniciarsesion
     public String iniciarSession() {
@@ -169,25 +180,7 @@ public class supervisorController {
 
     //metodos de torneos
     //Crear nuevo torneo
-    public void crearTorneo() {
-
-        try {
-            torneo.setIdLugarTorneo(lugarTorneo);
-
-            torneo.setIdSupervisor(supervisor);
-
-            TorneoFL.create(torneo);
-
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso: ", "Se creo el torneo exitosamente"));
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso: ", "Se creo el torneo exitosamente."));
-        }
-
-    }
+   
 
     //Eliminar Torneo
     public void eliminarTorneo(int id_torneo) {
@@ -374,6 +367,43 @@ public class supervisorController {
             e.printStackTrace();
         }
 
+    }
+    
+    
+    //crear torneo
+    public void createTorn() {
+        Usuario user = null;
+
+        try {
+
+            user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+
+            if (user != null) {
+                archivos.subirImagen();
+                torneo.setImagenTorneo(archivos.getPathReal());
+
+                supervisor.setIdSupervisor(1);
+                torneo.setIdSupervisor(supervisor);
+                
+                torneo.setIdLugarTorneo(lugarTorneo);
+
+                estado = estadoAFL.find(1);
+                torneo.setIdEstado(estado);
+
+                TorneoFL.create(torneo);
+
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso: ", "Se creo el torneo exitosamente"));
+            } else {
+                loginController loginController1 = new loginController();
+                loginController1.verificarSession();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso: ", "Error"));
+        }
     }
 
 }

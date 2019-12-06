@@ -93,25 +93,27 @@ public class archivosController {
         String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("archivos/images");
         path = path.substring(0, path.indexOf("\\build"));
         path = path + "\\web\\archivos\\images\\";
-        
+
         try {
-            
+
             this.nombre = file.getSubmittedFileName();
             path = path + this.nombre;
             pathReal = "/archivos/images/" + this.nombre;
-            
+
             InputStream in = file.getInputStream();
             File f = new File(path);
             f.createNewFile();
             FileOutputStream out = new FileOutputStream(f);
-            
+
             byte[] data = new byte[in.available()];
             in.read(data);
             out.write(data);
-            
+
             in.close();
             out.close();
-            
+
+            FacesContext.getCurrentInstance().responseComplete();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

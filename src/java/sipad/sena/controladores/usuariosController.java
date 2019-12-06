@@ -79,6 +79,11 @@ public class usuariosController {
     private Eps eps;
     private List<Eps> epsL;
     
+    private LugarTorneoFacadeLocal lugarTorneoFacadeLocal;
+    private LugarTorneo lugarTorneo;
+    
+    
+
     @EJB
     private TorneoFacadeLocal torneosFacadeLocal;
     private Torneo torneos;
@@ -101,6 +106,7 @@ public class usuariosController {
         archivo = new archivosController();
         eps = new Eps();
         torneos = new Torneo();
+        lugarTorneo = new LugarTorneo();
         
         listaTipoDoc = tipoDocFL.findAll();
         listaTipoSangre = tipoSangreFL.findAll();
@@ -269,10 +275,6 @@ public class usuariosController {
     public void setTorneos(Torneo torneos) {
         this.torneos = torneos;
     }
-    
-    
-    
-    
 
     //METODOS:
     //Opciones con alumnos-------------------------------------------------------------
@@ -309,7 +311,6 @@ public class usuariosController {
             categoria = categoriaFL.find(1);
 
             listarAlumnos = alumnoFL.findInfoAlumno(categoria.getIdCategoria());
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -1100,7 +1101,7 @@ public class usuariosController {
         }
 
     }
-    
+
     public void actualizarFallasAlumno() {
 
         Usuario user = null;
@@ -1301,32 +1302,34 @@ public class usuariosController {
         }
 
     }
-    
+
     //torneos
-    public void torneoInscripbion(){
-        
+    public void torneoInscripbion() {
+
         try {
-            
+
             usuarios = usuariosFL.find(79666596);
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
 
-    public List<Torneo> buscarTorneos(){
-        
+    public List<Torneo> buscarTorneos() {
+
         List<Torneo> torneos = null;
-        
+
         try {
-            
+
             torneos = torneosFacadeLocal.findAll();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        return  torneos;
+
+        return torneos;
     }
+
+    
 }
