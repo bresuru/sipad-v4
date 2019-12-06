@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <head>
+        <title>Usuarios</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <h:body>
+
+        <!-- Administracion de usuarios -->
+        <div class="tab-pane fade bg-white w-100 h-100" id="nav-usuario" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="col-md-4 float-left pb-3">
+                <h6 class="max-auto col-12 text-primary text-center pt-2">#{textSupp.queDeseasHacer}</h6>
+                <ul class="nav mr-auto">
+
+                    <!-- Boton de crear usuario -->
+                    <li class="nav-item col-6" title="Crear nuevo usuario">
+                        <a class="btn btn-outline-primary w-100 actual" id="btn-createUser" data-toggle="tab" href="#nav-createUser" role="tab" aria-controls="nav-r" aria-selected="true">
+                            <i class="fas fa-plus-square mx-auto"></i> <h:outputText value=" #{textSupp.crear}"/>
+                        </a> 
+                    </li>
+
+                    <h:outputLabel />
+
+                    <!-- Boton de consultar usuario -->
+                    <li class="nav-item col-6" title="Consultar usuario">
+                        <a class="btn btn-outline-primary w-100 actual" id="btn-consultUser" data-toggle="tab" href="#nav-consultarUser" role="tab" aria-controls="nav-r" aria-selected="true">
+                            <i class="fas fa-book mx-auto"></i> <h:outputText value=" #{textSupp.consultar}"/>
+                        </a> 
+                    </li>
+
+                    <h:outputLabel class="col-12"/>
+
+                    <!-- Boton de modificar usuario -->
+                    <li class="nav-item col-6" title="Activar usuario">
+                        <a class="btn btn-outline-warning w-100 actual" id="btn-editUser" data-toggle="tab" href="#nav-activarUser" role="tab" aria-controls="nav-r" aria-selected="true">
+                            <i class="fas fa-edit mx-auto"></i> <h:outputText value=" #{textSupp.activar}"/>
+                        </a> 
+                    </li> 
+
+                    <h:outputLabel />
+
+                    <!-- Boton de eliminar usuario -->
+                    <li class="nav-item col-6" title="Eliminar usuario">
+                        <a class="btn btn-outline-danger w-100 actual" id="btn-eliminarUser" data-toggle="tab" href="#nav-eliminarUser" role="tab" aria-controls="nav-r" aria-selected="true">
+                            <i class="fas fa-trash-alt"></i> <h:outputText value=" #{textSupp.desactivar}"/>
+                        </a> 
+                    </li>
+                </ul>	
+            </div>
+
+
+            <!-- Opciones despreglabes de usuario -->
+            <div class="tab-content col-md-4 tamaño-barra-admi float-left" id="nav-tabred">
+
+                <!-- Espacio de Crear usuario -->
+                <div class="tab-pane fade show bg-primary w-100 h-100 text-white pb-1" id="nav-createUser" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <h6 class="col-12 text-center pt-2 pb-2">
+                        #{textSupp.infoCrearUsu}
+                    </h6>
+                    <h4 class="fas fa-arrow-down col-12 text-center"></h4>
+                    <h:form class="col-12 text-center pb-4">
+                        <h:commandLink action="html/usuarios/formularios/crear_usuario.html" class="btn btn-light" target="controlador" value="#{textSupp.realizarFormulario}"/>
+                    </h:form>
+                    
+                </div>
+                <!-- Espacio de consultar una usuario -->
+                <div class="tab-pane fade show bg-primary w-100 h-100 text-white pb-3" id="nav-consultarUser" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <h6 class="col-12 text-center pt-2 pb-2">
+                        #{textSupp.realizarFormulario}
+                    </h6>
+                    <div class="row text-center pl-4 pr-4 justify-content-center">
+                        <a href="html/usuarios/tablas/tabla_estudiantes.html" class="btn btn-outline-light col-5" target="controlador">#{textSupp.estudiante}</a>
+                        <h:outputText class="m-3" />
+                        <a href="html/usuarios/tablas/tabla_profesores.html" class="btn btn-outline-light col-5" target="controlador">#{textSupp.profesor}</a>
+                        <h:outputText class="col-12" value="+"/>
+                        <a href="html/usuarios/tablas/tabla_supervisor.html" class="btn btn-outline-light col-5" target="controlador">#{textSupp.supervisor}</a>
+                        <h:outputText class="m-3" />
+                        <a href="html/usuarios/tablas/todos_usuarios.html" class="btn btn-outline-light col-5" target="controlador">#{textSupp.verTodos}</a>
+                    </div>
+                </div>
+
+                <!-- Espacio de eliminar una usuario -->
+                <div class="tab-pane fade show bg-danger w-100 h-100 text-white pb-3" id="nav-eliminarUser" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <h6 class="col-12 text-center pt-2 pb-2">
+                        #{textSupp.queDeseasEliminar}
+                    </h6>
+                    <div class="row text-center pl-4 pr-4 justify-content-center">
+                        <a href="html/usuarios/eliminar_usuario/eliminar_estudiante.html" class="btn btn-outline-light col-5" target="controlador">#{textSupp.estudiante}</a>
+                        <h:outputText class="m-3" />
+                        <a href="html/usuarios/eliminar_usuario/eliminar_profesor.html" class="btn btn-outline-light col-5" target="controlador">#{textSupp.profesor}</a>
+                        <h:outputText class="col-12" value="+"/>
+                        <a href="html/usuarios/eliminar_usuario/eliminar_supervisor.html" class="btn btn-outline-light col-5" target="controlador">#{textSupp.supervisor}</a>
+                        <h:outputText class="m-3" />
+                        <a href="html/usuarios/eliminar_usuario/eliminar_usuario.html" class="btn btn-outline-light col-5" target="controlador">#{textSupp.verTodos}</a>
+                    </div>
+                </div>
+
+                <!-- Espacio de activar una usuario -->
+                <div class="tab-pane fade show bg-warning w-100 h-100 text-white pb-1" id="nav-activarUser" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <h6 class="col-12 text-center pt-2 pb-2">
+                        #{textSupp.infoActivarUsu}
+                    </h6>
+                    <h4 class="fas fa-arrow-down col-12 text-center"></h4>
+                    <h:form class="col-12 text-center pb-4">
+                        <h:commandLink action="html/usuarios/activar_usuario/activar_usuario.html" class="btn btn-light" target="controlador" value="#{textSupp.comenzar}"/>
+                    </h:form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </h:body>
+</html>

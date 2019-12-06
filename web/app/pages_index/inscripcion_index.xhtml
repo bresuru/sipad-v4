@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      >
+
+    <h:head>
+        <title>Inscripción</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link href="../../resources/css/all.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/css/estilos.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+
+    <f:view locale="es">
+
+        <h:body>
+
+            <!-- Contenedor de toda la informacion y interaccion -->
+            <div class="w-100 pr-3 pl-3">
+
+                <!-- Encavezado -->
+                <header class="row p-1">
+
+                    <!-- Nombre de la academia deportiva -->
+                    <div class="col-12 pl-4 justify-content-center">
+                        <!-- Logo de la academia -->
+                        <div class="h-100 justify-content-center">
+                            <div class="h-100 logo">
+                            </div>	
+                            <h2 class="col-12 pt-3 text-center d-md-none">Bocaneiros</h2>
+                            <h2 class="col-12 pt-3 d-none d-md-block text-center">#{textSupp.academiaDeportivaB}</h2>
+                        </div>
+                    </div>
+
+                </header>
+
+                <!-- Navegacion	 -->
+                <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light row">
+
+                    <!-- Boton de moviles -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navegador" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+                        <span class="navbar-toggler-icon"></span>
+
+                    </button>
+
+                    <!-- Botones de pantalla grande -->
+                    <div class="collapse navbar-collapse" id="navegador">
+
+                        <!-- Botones de paginas -->
+                        <div class="collapse navbar-collapse" id="navegador">
+
+                            <!-- Botones de paginas -->
+                            <ul class="nav mr-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="../../index.xhtml"><i class="fas fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="torneo_index.xhtml"><i class="fas fa-trophy"></i> Torneos</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="categoriaDeportiva_index.xhtml"><i class="fas fa-futbol"></i> Categoria deportiva </a>
+                                </li> 
+
+                                <li class="nav-item">
+                                    <a class="nav-link actual" href="inscripcion_index.xhtml">
+                                        <i class="fas fa-file-signature"></i> Inscripciónes
+                                    </a>    
+                                </li>
+
+
+
+                                <li class="nav-item dropdown ">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-key"></i> #{textSupp.ingresar}
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" data-toggle="modal" href="#iniciar">
+                                            #{textSupp.iniciarS}
+                                        </a>
+
+                                        <a class="dropdown-item" href="inscripcion_index.xhtml">
+                                            #{indexTextEdit.registrarse}
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+                </nav>
+                <!-- Fin de la barra de navegacion y encabezado -->
+
+                <div class="row">
+                    <h:messages globalOnly="true" showDetail="true" 
+                                class="nav-link bg-success text-white col-12 mb-0" />
+                </div>
+
+                <!-- Titulo de la pagina -->
+                <div class="bd-example row">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="../../resources/images/Inscripciones.jpg" class="d-block w-100" alt="..."/>
+                                <div class="carousel-caption d-none d-md-block w-75 h-100 pt-5">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Fichas con los torneos actuales -->
+
+                <!-- Nota para el usuario -->
+                <h2 class="row justify-content-center bg-success">
+                    <div>
+                        <p class="small col-12 text-justify">"Seleccione la categoria deportiva a la que deseas inscribirse"</p>
+                    </div>
+                </h2>
+
+                <!-- Fichas de categorias deportivas -->
+                <div class="row">
+
+                    <!-- Ficha de inscripcion futbol -->
+                    <h:form class="col-12 col-lg-4">
+                        <div class="card bg-ficha espF">
+                            <img src="../../resources/images/FUTBOL.jpg" class="card-img-top" alt="..."/>
+                            <div class="card-body">
+
+                                <h5 class="card-title">Inscripciónes a Futbol</h5>
+
+                                <p class="card-text">
+
+                                </p>
+
+                                <a href="inscripcionFutbol.xhtml" class="btn btn-success float-right">
+                                    Inscribirse
+                                </a>
+
+                            </div>
+                        </div>
+                    </h:form>
+
+                    <!-- Ficha de inscripcion futbol -->
+                    <div class="col-12 col-lg-4">
+                        <div class="card bg-ficha espF">
+                            <img src="../../resources/images/PORRAS1.jpg" class="card-img-top" alt="..."/>
+                            <div class="card-body">
+
+                                <h5 class="card-title">Inscripciónes a Porras</h5>
+
+                                <p class="card-text">
+
+                                </p>
+
+                                <a href="inscripcionPorras.xhtml" class="btn btn-success float-right">
+                                    Inscribirse
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ficha de Teakwondo  -->
+                    <div class="col-12 col-lg-4">
+                        <div class="card bg-ficha espF">
+                            <img src="../../resources/images/TAEKWONDO1.jpg" class="card-img-top" alt="..."/>
+                            <div class="card-body">
+
+                                <h5 class="card-title">Inscripciónes a Taekwondo</h5>
+
+                                <p class="card-text">
+
+                                </p>
+
+                                <a href="inscripcionTeakwondo.xhtml" class="btn btn-success float-right">
+                                    Inscribirse
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Nota para el usuario -->
+                <h2 class="row justify-content-center bg-danger mt-4">
+                    <div>
+                        <p class="small col-12 text-justify">"Solo puedes estar inscrito a una categoria deportiva a la vez"</p>
+                    </div>
+                </h2>
+
+                <!-- Footer -->
+                <ui:include src="/WEB-INF/indexEst/footer.xhtml"/>
+
+            </div>
+            <!-- *********** Fin del contenedor ********* -->
+
+            <!-- ************* Formulario ************ -->
+            <!-- formulario de iniciar sesion -->
+            <div class="modal fade" id="iniciar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="row">
+                                <h4 class="modal-title col-12 text-center" id="exampleModalLabel">
+                                    #{textSupp.iniciarS}
+                                </h4>
+                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"></span>
+                            </button>
+                        </div>
+
+                        <h:form class="modal-body">
+
+                            <div class="p-1 pl-3 pr-3" action="POST">
+                                <div class="form-group row">
+                                    <h:outputLabel value="#{textSupp.documentoI}" for="doc"/>                                                
+
+                                    <h:inputText class="form-control" id="usuario" 
+                                                 value="#{loginController.login.usuario}"  required="true"/>
+                                    <h:message for="usuario"/>
+                                </div>
+                                <div class="form-group row">
+                                    <h:outputLabel value="#{textSupp.aceptar}" for="pass"/>
+                                    <h:inputText a:type="password" class="form-control" id="pass" 
+                                                 value="#{loginController.login.contrasena}"/>
+                                    <h:message for="pass"/>
+                                </div>
+
+                                <div class="col-12 text-center">
+                                    <h:commandButton class="btn btn-primary col-3" value="#{textSupp.iniciarS}"
+                                                     action="#{loginController.iniciarSesion()}"
+                                                     />
+                                </div>	
+                            </div>
+                            <div class="form-group row">
+                                <ul class="nav mr-auto">
+                                    <li class="nav-item active">
+                                        <a class="nav-link actual" data-toggle="modal" href="#recuperar">
+                                            #{textSupp.olvidePass}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                        </h:form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Fin formulario de ingreso  -->
+
+            <!-- Formulario de recuperacion de contraseña -->
+            <div class="modal fade" id="recuperar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="row">
+                                <h4 class="modal-title col-12 text-center" id="exampleModalLabel">Cambio de contraseña</h4>
+                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <h:form class="modal-body">
+
+                            <div class="p-1 pl-3 pr-3" action="POST">
+                                <div class="form-group row">
+                                    <div class="mb-3 col-12">
+                                        <h:outputLabel for="correo"  value="#{textSupp.correo}"/>
+                                        <h:inputText a:type="mail" class="form-control" id="correo" value="#{mailController.correo.para}" required="true"/>
+                                        <h:message for="correo"/>
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <h:outputLabel for="doc" value="#{textSupp.documentoI}"/>
+                                        <h:inputText id="doc" class="form-control" required="true" value="#{mailController.usuario.documento}"/>
+                                        <h:message for="correo"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <h:commandButton class="btn btn-primary col-3" value="#{textSupp.Enviar}"
+                                                     actionListener="#{mailController.recupararContraseña()}"/>
+                                </div>	
+                            </div>
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ********************* JavaScript ************************ -->
+            <script src="../../resources/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+            <script src="../../resources/js/popper.min.js" type="text/javascript"></script>
+            <script src="../../resources/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="../../resources/js/sweetalert2@8.js" type="text/javascript"></script>
+            <script src="../../resources/js/all.min.js" type="text/javascript"></script>
+            <!-- ************************************************************* -->
+
+        </h:body>
+    </f:view>
+
+</html>

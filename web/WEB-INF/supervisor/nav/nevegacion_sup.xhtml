@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="../../../resources/css/estilos-index-sup.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+
+    <f:view locale="es">
+
+        <h:body>
+
+            <!-- Barra de navegacion -->
+            <div class="container">
+                <ul class="nav botones mt-5 mb-5">
+
+                    <!--Boton Usuarios -->
+                    <li class="nav-item dropdown mx-auto">
+
+                        <a class="btn btn-r  btn-info" title="Administraccion de usuarios" data-toggle="dropdown" href="#" role="button">
+                            <img src="../../resources/images/images_sup/Usuarios.png" alt=""/>
+                        </a>
+                        <h4 class="mt-1">#{textSupp.usuarios}</h4>
+                        <!-- Menu desplegable -->
+                        <h:form class="dropdown-menu">
+
+                            <!-- Seccion de crear usuarios -->
+                            <ul class="dropdown-item nav-ani disp">
+                                #{textSupp.crear}  
+                                <li class="dis">
+                                    <a class="disp dropdown-item nav-ani" 
+                                       href="app_supervisor/usuarios/alumnoRegistroP1.xhtml">
+                                        #{textSupp.estudiante}
+                                    </a>
+                                    <a class="disp dropdown-item nav-ani" 
+                                       href="app_supervisor/usuarios/registroProfesor.xhtml">
+                                        #{textSupp.profesor}
+                                    </a>
+                                    <a class="disp dropdown-item nav-ani" 
+                                       href="app_supervisor/usuarios/registroSupervisor.xhtml">
+                                        #{textSupp.supervisor}
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!-- Seccion de consultar usuarios -->
+                            <ul class="dropdown-item nav-ani disp">
+                                #{textSupp.consultar}  
+                                <li class="dis">
+                                    <!-- Boton de consultar alumnos -->
+                                    <a class="dropdown-item nav-ani disp" 
+                                       href="app_supervisor/usuarios/listarAlumnos.xhtml">
+                                        #{textSupp.estudiante}
+                                    </a>
+                                    <!-- Boton de consultar profesores -->
+                                    <a class="dropdown-item nav-ani disp" 
+                                       href="app_supervisor/usuarios/listarProfesores.xhtml">
+                                        #{textSupp.profesor}
+                                    </a>
+                                    <!-- Boton de consultar supervisores -->
+                                    <a class="dropdown-item nav-ani disp" 
+                                       href="app_supervisor/usuarios/listarSupervisores.xhtml">
+                                        #{textSupp.supervisor}
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!-- Seccion de consultar usuarios inactivos -->
+                            <ul class="dropdown-item nav-ani disp">
+                                #{textSupp.UsuarioI} 
+                                <li class="dis">
+                                    <!-- Boton de consultar alumnos -->
+                                    <a class="dropdown-item nav-ani disp" 
+                                       href="app_supervisor/usuarios/listarAlumnosInac.xhtml">
+                                        #{textSupp.estudiante}
+                                    </a>
+                                    <!-- Boton de consultar profesores -->
+                                    <a class="dropdown-item nav-ani disp" 
+                                       href="app_supervisor/usuarios/listarProfesoresInac.xhtml">
+                                        #{textSupp.profesor}
+                                    </a>
+                                    <!-- Boton de consultar supervisores -->
+                                    <a class="dropdown-item nav-ani disp" 
+                                       href="app_supervisor/usuarios/listarSupervisoresInac.xhtml">
+                                        #{textSupp.supervisor}
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </h:form>
+                    </li>
+
+                    <!--Boton Categorias deportivas  -->	
+                    <li class="nav-item dropdown mx-auto">
+
+                        <a class="btn btn-r btn-info" title="Administraccion de categoria" data-toggle="dropdown" href="#" role="button">
+                            <img src="../../../resources/images/images_sup/Categorias.png" alt=""/>
+                        </a>
+                        <h4 class="mt-1 mb-5">#{textSupp.categoriaDeportiva}</h4>
+                        <h:form class="dropdown-menu">
+
+                            <!-- Seccion de categoria deportiva -->
+                            <ul class="dropdown-item nav-ani disp">
+                                #{textSupp.categoriaDeportiva}  
+                                <li class="dis">
+                                    <a class="disp dropdown-item nav-ani" 
+                                       href="app_supervisor/categoria_deportiva/consultar_categoria.xhtml">
+                                        #{textSupp.consultar}
+                                    </a>
+                                    <a class="disp dropdown-item nav-ani" 
+                                       href="app_supervisor/categoria_deportiva/crear_categoria_deportiva.xhtml">
+                                        #{textSupp.crear}
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Seccion de niveles --> 
+                            <ul class="dropdown-item nav-ani disp">
+                                #{textSupp.nivelCategoria}  
+                                <li class="dis">
+                                    <!-- Boton de consultar alumnos -->
+                                    <a class="dropdown-item nav-ani disp" 
+                                       href="app_supervisor/categoria_deportiva/crear.xhtml">
+                                        #{textSupp.crear}
+                                    </a>  
+                                </li>
+                            </ul>
+
+                        </h:form>
+                    </li>
+
+
+
+                    <!-- Boton Torneos -->	
+                    <li class="nav-item dropdown mx-auto">
+                        <a class="btn btn-r btn-info" title="Adminstraccion de torneos" data-toggle="dropdown" href="#" role="button">
+                            <img src="../../resources/images/images_sup/Torneos.png" alt=""/>
+                        </a>
+                        <h4 class="mt-1 mb-5">#{textSupp.torneos}</h4>
+                        <!-- Menu desplegable -->
+                        <h:form class="dropdown-menu">
+                            <a class="dropdown-item nav-ani" 
+                               href="app_supervisor/torneos/crear_torneos.xhtml"  
+                               >#{textSupp.crear}</a>
+                            <a class="dropdown-item nav-ani" 
+                               href="app_supervisor/torneos/listarTorneos.xhtml?face-redirect=true
+                               "
+                               >#{textSupp.consultar}</a>
+
+                        </h:form>
+                    </li>	
+
+                    <!-- Boton Calendario -->
+                    <li class="nav-item dropdown mx-auto">
+
+                        <a class="btn btn-r btn-info" title="Adminstracion de eventos" data-toggle="dropdown" href="#" role="button">
+                            <img src="../../resources/images/images_sup/Calendario.png" alt=""/>
+                        </a>
+                        <h4 class="mt-1">#{textSupp.eventos}</h4>
+                        <!-- Menu desplegable -->
+                        <!-- Menu desplegable -->
+                        <h:form class="dropdown-menu">
+
+                            <a class="dropdown-item nav-ani" href="app_supervisor/eventos/listar_eventos.xhtml">
+                                #{textSupp.consultar}
+                            </a>
+                            <a class="dropdown-item nav-ani" href="app_supervisor/eventos/crear_eventos.xhtml">
+                                #{textSupp.crear}</a>
+
+                        </h:form>
+
+
+                    </li>
+
+                    <!-- Boton Reportes -->
+                    <li class="nav-item dropdown mx-auto">
+                        <a class="btn btn-r btn-info" title="Adminstraccion de reportes" data-toggle="dropdown" href="#" role="button">
+                            <img src="../../resources/images/images_sup/Reportes.png" alt=""/>
+                        </a>
+                        <h4 class="mt-1">#{textSupp.reportes}</h4>
+                        <!-- Menu desplegable -->
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item nav-ani" href="app_supervisor/reportes/indexReportes.xhtml">Generar reporte</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </h:body>
+    </f:view>
+</html>

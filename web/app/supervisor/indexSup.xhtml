@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <title>Supervisor</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <!--Archivos css-->
+        <ui:include src="../../WEB-INF/supervisor/link_estilos.xhtml"/>
+        <f:event type="preRenderView" listener="#{loginController.verificarSession()}"/>
+
+    </h:head>
+
+
+    <h:body>
+        <h:form class="text-right bg-dark mb-4 p-2 text-light sticky-top p-0 ">
+            <!-- Boton de idoma -->
+
+            <button type="button" class="btn p-0 dropdown-toggle  text-white"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-globe"></i>
+            </button>
+
+            <div class="dropdown-menu p-0" aria-labelledby="dropdownMenuButton">
+
+                <c:forEach items="#{lenguajeController.listaIdioma}" var="idioma">
+
+                    <h:commandLink
+                        class="dropdown-item" actionListener="#{lenguajeController.cambiarIdioma(idioma)}"
+                        value="#{idioma.language}"
+                        />
+
+                </c:forEach>
+
+            </div>
+
+            <h:commandLink value="#{textSupp.cerrarSession}" class="text-light pl-4"
+                           action="#{loginController.cerrarSession()}"/>
+        </h:form>
+
+        <div class="container align-center text-center">
+
+            <!-- Titulo -->
+            <h1>#{textSupp.academiaDeportivaB}</h1>
+            <!-- Foto de supervisor -->
+            <div class="pl-5 pr-5">
+                <h:graphicImage class="col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2 images-supp mb-1" value="#{user.getFotoPerfil()}"/>
+                <!-- Nombre de supervisor -->
+
+                <div class="mx-auto text-center row p-2">
+
+                    <div class="col-4 col-lg-5">
+
+                    </div>
+
+
+                    <div class="float-left col-4 col-lg-2 p-0">
+                        <h4>#{user.getNombre1()} #{user.getNombre2()} #{user.getApellido1()} #{user.getApellido2()} </h4>
+                    </div>
+
+                    <h:form class="float-left col-4 col-lg-5 text-left">
+
+                        <h:commandLink class="btn btn-warning" title="Modificar informacion"
+                                       action="app_supervisor/perfil/actualizarInfo?faces-redirect=true">
+                            <i class="fas fa-user-edit"></i>
+                        </h:commandLink>
+
+                    </h:form>
+
+                </div>
+
+
+            </div>
+
+            <!-- Barra de navegacion -->
+
+            <ui:include src="../../WEB-INF/supervisor/nav/nevegacion_sup.xhtml"/>
+
+            <h3>#{textSupp.bienvenidoSupervisor}</h3>
+
+            <div class="row">
+
+                <h:form class="col-12 text-center mt-5">
+                    <h:commandButton
+                        a:type="button" class="btn btn-warning"
+                        value="#{textSupp.enviarCorreo}"  a:data-toggle="modal" a:data-target="#correo"/>
+                    
+                    <h:messages globalOnly="true" showDetail="true" class="pt-2"/>
+                </h:form>
+
+            </div>
+
+
+            <div class="modal fade row">
+                <ui:include src="../../WEB-INF/indexEst/footer.xhtml"/>
+            </div>
+
+        </div>
+
+
+        <!-- Modal enviar correo -->
+        <div class="modal fade row mt-5 pt-5" id="correo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  p-2 mt-5" role="document">
+                <div class="modal-content row bg-dark text-white">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            #{textSupp.Enviar} #{textSupp.correo}
+                        </h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                            X
+                        </button>
+                    </div>
+                    <div class=" col-12 bg-light">
+
+                        <h:form class="container col-12" enctype="multipart/form-data">
+
+
+                            <div class="w-100 mx-auto">
+
+                                <div class="row p-5 ">
+
+
+                                    <div class="row text-center">
+
+                                        <div class="col-12 p-2">
+                                            <h:commandButton
+                                                a:type="button" class="btn btn-warning col-10"
+                                                value="#{textSupp.enviarCorreo}"  
+                                                a:data-toggle="modal" a:data-target="#correoT"/>
+                                        </div>
+
+                                        <div class="col-12 p-2">
+                                            <h:commandButton
+                                                a:type="button" class="btn btn-warning col-10"
+                                                value="#{textSupp.enviarCorreoS}"  
+                                                a:data-toggle="modal" a:data-target="#correoS"/>
+                                        </div>
+
+
+                                        <div class="col-12 p-2">
+                                            <h:commandButton
+                                                a:type="button" class="btn btn-warning col-10"
+                                                value="#{textSupp.enviarCorreoP}"  
+                                                a:data-toggle="modal" a:data-target="#correoP"/>
+                                        </div>
+
+
+                                        <div class="col-12 p-2">
+                                            <h:commandButton
+                                                a:type="button" class="btn btn-warning col-10"
+                                                value="#{textSupp.enviarCorreoE}"  
+                                                a:data-toggle="modal" a:data-target="#correoE"/>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </h:form>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal enviar correo Todos -->
+        <div class="modal fade row mt-5" id="correoT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-lg" role="document">
+                <div class="modal-content row bg-dark text-white">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            #{textSupp.Enviar} #{textSupp.correo}
+                        </h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                            X
+                        </button>
+                    </div>
+                    <div class=" col-12 bg-light text-dark">
+
+                        <h:form class="container col-12" enctype="multipart/form-data">
+
+
+                            <div class="w-100 mx-auto">
+
+                                <div class="row">
+
+                                    <div class="col-12 col-12">
+
+                                        <div class="mb-3 col-12 mt-3 mb-3">
+                                            <h:outputLabel for="asunto" value="#{textSupp.asunto}: "/>
+                                            <h:inputText 
+                                                value="#{mailController.correo.asunto}" 
+                                                class="form-control" id="asunto"  a:type="text"  a:pattern="[A-Za-z0-9 - ]{5,50}"/>
+
+                                            <h:messages for="asunto" showDetail="true"/>
+                                        </div>
+
+                                        <div class="mb-3 col-12">
+                                            <h:outputLabel for="texto" value="#{textSupp.texto}: "/>
+                                            <h:inputTextarea    
+                                                value="#{mailController.correo.texto}" 
+                                                class="form-control p-1" id="texto" rows="10"  a:type="text"  a:pattern="[A-Za-z0-9]{10,300}"/>
+
+                                            <h:messages for="texto" showDetail="true"/>
+                                        </div>
+
+
+                                        <div class="mb-4 mt-4 text-center">
+                                            <h:commandButton value="#{textSupp.Enviar}"
+                                                             class="btn btn-success"
+                                                             actionListener="#{mailController.enviarCorreoT()}"/>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </h:form>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal enviar correo supervisor -->
+        <div class="modal fade row mt-5" id="correoS" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-lg" role="document">
+                <div class="modal-content row bg-dark text-white">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            #{textSupp.enviarCorreoS}
+                        </h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                            X
+                        </button>
+                    </div>
+                    <div class=" col-12 bg-light text-dark">
+
+                        <h:form class="container col-12" enctype="multipart/form-data">
+
+
+                            <div class="w-100 mx-auto">
+
+                                <div class="row">
+
+                                    <div class="col-12 col-12">
+
+                                        <div class="mb-3 col-12 mt-3 mb-3">
+                                            <h:outputLabel for="asunto" value="#{textSupp.asunto}: "/>
+                                            <h:inputText 
+                                                value="#{mailController.correo.asunto}" 
+                                                class="form-control" id="asunto"  a:type="text"  a:pattern="{5,50}"/>
+
+                                            <h:messages for="asunto" showDetail="true"/>
+                                        </div>
+
+                                        <div class="mb-3 col-12">
+                                            <h:outputLabel for="texto" value="#{textSupp.texto}: "/>
+                                            <h:inputTextarea    
+                                                value="#{mailController.correo.texto}" 
+                                                class="form-control p-1" id="texto" rows="10"  a:type="text"  a:pattern="[A-Za-z0-9]{10,300}"/>
+
+                                            <h:messages for="texto" showDetail="true"/>
+                                        </div>
+
+
+                                        <div class="mb-4 mt-4 text-center">
+                                            <h:commandButton value="#{textSupp.Enviar}"
+                                                             class="btn btn-success"
+                                                             actionListener="#{mailController.enviarCorreoS()}"/>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </h:form>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal enviar correo Profesores -->
+        <div class="modal fade row mt-5" id="correoP" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-lg" role="document">
+                <div class="modal-content row bg-dark text-white">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            #{textSupp.enviarCorreoP}
+                        </h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                            X
+                        </button>
+                    </div>
+                    <div class=" col-12 bg-light text-dark">
+
+                        <h:form class="container col-12" enctype="multipart/form-data">
+
+
+                            <div class="w-100 mx-auto">
+
+                                <div class="row">
+
+                                    <div class="col-12 col-12">
+
+                                        <div class="mb-3 col-12 mt-3 mb-3">
+                                            <h:outputLabel for="asunto" value="#{textSupp.asunto}: "/>
+                                            <h:inputText 
+                                                value="#{mailController.correo.asunto}" 
+                                                class="form-control" id="asunto"  a:type="text"  a:pattern="{5,50}"/>
+
+                                            <h:messages for="asunto" showDetail="true"/>
+                                        </div>
+
+                                        <div class="mb-3 col-12">
+                                            <h:outputLabel for="texto" value="#{textSupp.texto}: "/>
+                                            <h:inputTextarea    
+                                                value="#{mailController.correo.texto}" 
+                                                class="form-control p-1" id="texto" rows="10"  a:type="text"  a:pattern="[A-Za-z0-9]{10,300}"/>
+
+                                            <h:messages for="texto" showDetail="true"/>
+                                        </div>
+
+
+                                        <div class="mb-4 mt-4 text-center">
+                                            <h:commandButton value="#{textSupp.Enviar}"
+                                                             class="btn btn-success"
+                                                             actionListener="#{mailController.enviarCorreoP()}"/>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </h:form>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal enviar correo estudiante -->
+        <div class="modal fade row mt-5" id="correoE" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-lg" role="document">
+                <div class="modal-content row bg-dark text-white">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            #{textSupp.enviarCorreoE}
+                        </h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                            X
+                        </button>
+                    </div>
+                    <div class=" col-12 bg-light text-dark">
+
+                        <h:form class="container col-12" enctype="multipart/form-data">
+
+
+                            <div class="w-100 mx-auto">
+
+                                <div class="row">
+
+                                    <div class="col-12 col-12">
+
+                                        <div class="mb-3 col-12 mt-3 mb-3">
+                                            <h:outputLabel for="asunto" value="#{textSupp.asunto}: "/>
+                                            <h:inputText 
+                                                value="#{mailController.correo.asunto}" 
+                                                class="form-control" id="asunto"  a:type="text"  a:pattern="{5,50}"/>
+
+                                            <h:messages for="asunto" showDetail="true"/>
+                                        </div>
+
+                                        <div class="mb-3 col-12">
+                                            <h:outputLabel for="texto" value="#{textSupp.texto}: "/>
+                                            <h:inputTextarea    
+                                                value="#{mailController.correo.texto}" 
+                                                class="form-control p-1" id="texto" rows="10"  a:type="text"  a:pattern="[A-Za-z0-9]{10,300}"/>
+
+                                            <h:messages for="texto" showDetail="true"/>
+                                        </div>
+
+
+                                        <div class="mb-4 mt-4 text-center">
+                                            <h:commandButton value="#{textSupp.Enviar}"
+                                                             class="btn btn-success"
+                                                             actionListener="#{mailController.enviarCorreoE()}"/>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </h:form>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </h:body>
+
+</html>

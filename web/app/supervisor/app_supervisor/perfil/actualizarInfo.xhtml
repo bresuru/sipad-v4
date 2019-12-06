@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Supervisor - informacion alumno</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <ui:include src="../../../../WEB-INF/supervisor/link_estilos.xhtml"/>
+
+        <f:event type="preRenderView" listener="#{loginController.verificarSession2()}"/>
+        <f:event type="preRenderView" listener="#{usuariosController.buscarSupervisor(user.getDocumento())}"/>
+
+    </h:head>
+
+
+    <h:body class="row p-0">
+
+        <div class="modal fade row">
+            <ui:include src="/WEB-INF/indexEst/footer.xhtml"/>
+        </div>
+
+        <h:form class="text-right bg-dark mb-4 p-2 text-light sticky-top p-0 col-12">
+
+            <a href="../../indexSup.xhtml" class="p-2 mr-3 text-white text-center ">#{textSupp.inicio}</a>
+
+
+            <!-- Boton de idoma -->
+
+            <button type="button" class="btn p-0 dropdown-toggle  text-white"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-globe"></i>
+            </button>
+
+            <div class="dropdown-menu p-0" aria-labelledby="dropdownMenuButton">
+
+                <c:forEach items="#{lenguajeController.listaIdioma}" var="idioma">
+
+                    <h:commandLink
+                        class="dropdown-item" actionListener="#{lenguajeController.cambiarIdioma(idioma)}"
+                        value="#{idioma.language}"
+                        />
+
+                </c:forEach>
+
+            </div>
+
+            <h:commandLink value="#{textSupp.cerrarSession}" class="text-light pr-4 pl-4"
+                           action="#{loginController.cerrarSession()}"/>
+        </h:form>
+
+        <!-- Modal -->
+        <div class="container col-12 col-md-8 col-lg-8 col-xl-6 pl-5">
+
+            <div class="modal-header bg-light">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    #{textSupp.modificar} #{textSupp.Info}
+                </h5>
+                <a href="../../indexSup.xhtml" class="close" >
+                    X
+                </a>
+            </div>
+
+
+            <div class=" col-12 p-2 bg-light">
+
+                <h:form class="container col-12" enctype="multipart/form-data">
+
+                    <div class="col-12">
+                        <h:messages globalOnly="true" showDetail="true" class="bg-success text-white p-1"/>
+                    </div>
+
+                    <h:inputHidden id="doc" value="#{usuariosController.usuarios.documento}"/>
+                    <h:message for="doc" showDetail="true"/>
+                    <h:inputHidden id="alum" value="#{usuariosController.alumno.idAlumno}"/>
+                    <h:message for="alum" showDetail="true"/>
+
+                    <div class="w-100 mx-auto">
+
+                        <div class="row">
+
+
+                            <!--  Contenedor del formulario de incripcion  -->
+                            <div class="col-10 text-ligh mx-auto">
+
+                                <div class="mb-3 row">
+                                    <h:outputLabel for="image" class="col-12 text-center" value="#{textSupp.fotoPerfil}"/>
+                                    <div class="col-12 col-lg-10 mx-auto">
+                                        <h:graphicImage value="#{usuariosController.usuarios.fotoPerfil}" class="col-12 images-circular mb-1"/>
+                                    </div>
+                                    <div class="col-12 mx-auto text-center">
+                                        <h:inputFile a:accept=".jpg" value="#{usuariosController.archivo.file}" 
+                                                     id="image" label="#{textSupp.buscarImage}" required="true"/>
+                                    </div>
+                                    <h:messages for="image" showDetail="true"/>
+                                </div>
+
+                                <div class="mb-3 mx-auto text-center">
+                                    <h:outputLabel for="doc" value="#{textSupp.documentoI}: "/>
+                                    <div class="">
+                                        <h:selectOneMenu class=""
+                                                         value="#{usuariosController.tipoDoc.idTipoDoc}">
+                                            <f:selectItems 
+                                                value="#{usuariosController.listaTipoDoc}"
+                                                var="tipoDoc"
+                                                itemValue="#{tipoDoc.idTipoDoc}"
+                                                itemLabel="#{tipoDoc.topoDoc}"
+                                                />
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <h:messages for="doc" showDetail="true"/>
+                                </div>
+
+                                <div class="mb-3">
+                                    <h:outputLabel for="nombreU" value="#{textSupp.nombre}: "/>
+                                    <h:inputText class="form-control" 
+                                                 value="#{usuariosController.usuarios.nombre1}" 
+                                                 id="nombreU" required="true"/>
+                                    <h:messages for="nombreU" showDetail="true"/>
+                                </div>
+
+                                <div class="mb-3">
+                                    <h:outputLabel for="nombreU2" value="#{textSupp.nombre} 2: "/>
+                                    <h:inputText class="form-control" 
+                                                 value="#{usuariosController.usuarios.nombre2}" 
+                                                 id="nombreU2" required="true"/>
+                                    <h:messages for="nombreU2" showDetail="true"/>
+                                </div>
+
+                                <div class="mb-3">
+                                    <h:outputLabel for="apellidoU" value="#{textSupp.apellidoUsu}: "/>
+                                    <h:inputText class="form-control" 
+                                                 value="#{usuariosController.usuarios.apellido1}" 
+                                                 id="apellidoU" required="true"/>
+                                    <h:messages for="apellidoU" showDetail="true"/>
+                                </div>
+
+                                <div class="mb-3">
+                                    <h:outputLabel for="apellidoU2" value="#{textSupp.apellidoUsu} 2: "/>
+                                    <h:inputText class="form-control" 
+                                                 value="#{usuariosController.usuarios.apellido2}" 
+                                                 id="apellidoU2" required="true"/>
+                                    <h:messages for="apellidoU2" showDetail="true"/>
+                                </div>
+
+                                <div class="mb-3">
+                                    <h:outputLabel for="fechaN" value="#{textSupp.fechaNacimiento}: "/>
+                                    <h:inputText 
+                                        value="#{usuariosController.usuarios.fechaNacimiento}" 
+                                        a:type="date" class="form-control" id="fechaN">
+                                        <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                    </h:inputText>
+                                    <h:messages for="fechaN" showDetail="true"/>
+                                </div>
+
+
+                                <div class="custom-file mb-2 mt-2">
+                                    <h:outputLabel for="eps" value="#{textSupp.eps}: "/>
+                                    <h:selectOneMenu class="ml-1" 
+                                                     value="#{inscripcionController.eps.idEps}">
+                                        <f:selectItems
+                                            var="listaE"
+                                            value="#{inscripcionController.epsL}"
+                                            itemLabel="#{listaE.nombreEps}"
+                                            itemValue="#{listaE.idEps}"
+                                            />
+                                    </h:selectOneMenu>
+                                    <h:messages for="eps" showDetail="true"/>
+                                </div>
+
+
+                                <div class="mb-2 mt-2">
+                                    <h:outputLabel value="#{textSupp.tipoSangre}: " />
+                                    <h:selectOneMenu class="ml-1"  
+                                                     value="#{usuariosController.tipoSangre.idtipoSangre}">
+                                        <f:selectItems 
+                                            value="#{usuariosController.listaTipoSangre}"
+                                            var="listaRh"
+                                            itemLabel="#{listaRh.rh}"
+                                            itemValue="#{listaRh.idtipoSangre}"
+                                            />
+                                    </h:selectOneMenu>
+                                </div>
+
+                                <!-- Llenar la tbla de alumno -->
+
+                                <h:inputHidden value="#{usuariosController.usuarios.documento}"/>
+
+                                <div class="mb-4 mt-4 text-center">
+                                    <h:commandButton value="#{textSupp.modificar}"
+                                                     class="btn btn-success"
+                                                     actionListener="#{usuariosController.actualizarSupp()}"
+                                                     />
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </h:form>
+
+
+            </div>
+
+        </div>
+
+
+    </h:body>
+
+
+</html>

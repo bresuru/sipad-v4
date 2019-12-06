@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light row">
+
+            <!-- Boton de moviles -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navegador" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <!-- Botones de pantalla grande -->
+            <div class="collapse navbar-collapse" id="navegador">
+
+                <!-- Botones de paginas -->
+                <ul class="nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link actual" href="../../app/alumno/indexAlumno.xhtml">
+                            <i class="fas fa-user-alt"></i> Perfil<span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../app/alumno/pages/info_profesor.xhtml">
+                            <i class="fas fa-address-book"></i> #{textSupp.profesor} 
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../app/alumno/pages/torneo_al.xhtml">
+                            <i class="fas fa-trophy"></i> #{textSupp.torneos}
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="../../app/alumno/pages/evento_al.xhtml">
+                            <i class="fas fa-laugh"></i> #{textSupp.eventos}
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../app/alumno/pages/horario_al.xhtml">
+                            <i class="fas fa-calendar-alt"></i> #{textSupp.horario}
+                        </a>
+                    </li> 
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../app/alumno/pages/notificacion_al.xhtml">
+                            <i class="fas fa-bell"></i> #{textSupp.Notificacion}
+                        </a>
+                    </li> 
+
+                    <!-- Boton de cerrar session -->
+                    <h:form class="nav-item text-dark">
+
+                        <h:commandLink 
+                            class="nav-link text-dark"
+                            action="#{loginController.cerrarSession()}">
+                            <i class="fas fa-sign-out-alt"/>
+                            #{textSupp.cerrarSession}
+                        </h:commandLink>    
+                    </h:form>
+                </ul>
+
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar.." aria-label="Search"/>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+
+            </div>
+
+        </nav>
+    </h:body>
+</html>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5ca5d8f0-760d-42ae-9c87-cd53867f7e0d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="super" class="java.lang.String"/>
+	<field name="nombreEvento" class="java.lang.String"/>
+	<field name="horario" class="java.lang.String"/>
+	<field name="informacion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<staticText>
+				<reportElement x="115" y="35" width="391" height="44" forecolor="#CC0000" uuid="44645dcd-6227-4b54-ab6f-c0f8e516c5b1"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" size="30" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Club deportivo Bocaneiros]]></text>
+			</staticText>
+			<image>
+				<reportElement x="37" y="8" width="71" height="71" uuid="a18dca65-b445-4d4e-bb7b-f09acf9d93ea"/>
+				<imageExpression><![CDATA["C:\\Users\\MAGG\\Documents\\Imagenes\\imagenes\\bocaneiros.png.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="98" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="152" height="20" forecolor="#CC0000" uuid="39b2c1ce-143b-4300-8a16-c8550235236d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Reporte realizado por:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="23" width="216" height="20" uuid="3b1c387d-f858-40ce-b97d-351f69f4d9c1"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Eventos club deportivo Boconeiros.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="64" width="450" height="20" uuid="c3b12a48-d728-44a3-a532-7fd234d08290"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Eventos realizados por la academia el ultimo año.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="40" width="100" height="20" forecolor="#CC0000" uuid="0cc686f4-44f8-4ed2-b216-22b5528f6a85"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Detalles:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="152" y="0" width="100" height="20" uuid="d1cca7fd-22cb-4479-93fa-983047fda965"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{super}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="36" y="2" width="142" height="20" forecolor="#CC0000" uuid="97c64056-d1e1-4d20-93b3-36c6866cadad"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[nombreEvento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="245" y="2" width="238" height="20" forecolor="#CC0000" uuid="87e1d7a1-bee6-4687-9661-928cf98beffc"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[informacion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="36" y="9" width="162" height="20" uuid="9a6cd280-95c4-4318-aed4-bdffab045c31"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreEvento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="9" width="284" height="20" uuid="bf359204-f228-493a-b0bd-1e2e09b0e77f"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{informacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="26" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="14" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

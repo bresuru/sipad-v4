@@ -1,0 +1,63 @@
+
+/* Tamaño de la barra de menu del administrador */
+.tamaño-barra-admi{
+	height: auto;
+}
+
+/* Para el tamaño de las imagenes */
+img{
+	background-size: 100% 100%;
+}
+
+/* Fondo supervisor */
+.bg-fondo-sup{
+	background: url("../img/fondoSupervisor.png");
+	background-size: 100% 100%;
+	background-attachment: fixed;
+}
+
+/* El iframe del supervisor */
+iframe{
+	height: 44em;
+	background-size: 100% 100%;
+
+}
+.iframe-supervisor{
+	height: 48em;
+	background-size: 100% 100%;
+}
+
+/* Oscurecer fondo */
+.dark-font{
+	background: rgba(0,0,0,0.5);
+}
+
+
+/* Tamaño de las cajas de opciones */
+/* Requerimiento de los imput: ;*/
+input:valid{
+	border: 1px solid green;
+}
+input:invalid{
+	border: 1px solid red;
+}
+
+/* Cointenedor */
+.container{
+	max-width: 1940px;
+	margin: auto;
+}
+
+/* Fondo de la barra de menu del supervsior */
+.bg-fondo{
+	background-image: url("../img/fondo-menuSupervisor.jpg");
+	background-size: 100% 100%;
+	background-attachment: fixed;
+}
+
+
+/* Imagen fija */
+.img-fixed{
+	position: fixed;
+}
+

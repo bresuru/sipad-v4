@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+
+    <head>
+        <title>Niveles</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <ui:include src="../../../../WEB-INF/supervisor/link_estilos.xhtml"/>
+
+        <ui:include src="../../../../WEB-INF/datatable/estilos.xhtml"/>
+
+        <f:event type="preRenderView" listener="#{loginController.verificarSession2()}"/>
+    </head>
+    <h:body>
+
+        <!-- NAVEGADOR -->
+
+        <ui:include src="../../../../WEB-INF/supervisor/nav/nav_sup_sec.xhtml"/>
+        <h:form class="container pt-3">
+            <h:dataTable value="#{categoriaController.listarInfo()}" var="lista" styleClass="stripe alumnos  table-success">
+
+                <h:column>
+
+                    <f:facet name="header">Niveles</f:facet> 
+
+                    <h:outputLabel id="idNivel" value="#{lista.nombreNivel}"/>
+
+
+
+                </h:column>
+
+
+                <h:column>
+
+                    <f:facet name="header">Objetivos</f:facet> 
+
+                    <h:outputLabel id="nombreC" value="#{lista.objetivos}"/>
+
+                </h:column>
+                <h:column>
+
+                    <f:facet name="header">Lugar entrenamiento</f:facet> 
+
+                    <h:outputLabel id="luga" value="#{lista.lugarIdLugar.nombreLugar}"/>
+
+                </h:column>
+                <h:column>
+
+                    <f:facet name="header">Profesor Categoria</f:facet> 
+
+                    <h:outputLabel id="profesor1" value="#{lista.idProfesor.documento.documento}"/>
+                    <br></br>
+                    <h:outputLabel id="profesor2" value="#{lista.idProfesor.documento.nombre1}"/>
+                    <br></br>
+                    <h:outputLabel id="profesor3" value="#{lista.idProfesor.documento.apellido1}"/>
+
+                </h:column>
+                     <h:column>
+
+                    <f:facet name="header">Alumnos</f:facet> 
+                            
+                   <h:commandButton class="btn btn-primary" value="Alumnos" 
+                                     action="#{categoriaController.informacionAlumno(lista.idCategoria)}"/>
+                   
+                </h:column>
+
+                <h:column>
+ 
+                     <f:facet name="header">Actualizar</f:facet>
+ 
+                     <h:commandButton class="btn btn-success" value="editar" 
+                                      action="#{categoriaController.consultarNivel(lista.idNivel)}"/>
+                
+                 </h:column>
+                  
+                 <h:column>
+ 
+                     <f:facet name="header">Eliminar</f:facet>
+ 
+                     <h:commandButton class="btn btn-danger" value="eliminar" 
+                                      actionListener="#{categoriaController.eliminarNivel(lista.idNivel)}"/> 
+ 
+                 </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>

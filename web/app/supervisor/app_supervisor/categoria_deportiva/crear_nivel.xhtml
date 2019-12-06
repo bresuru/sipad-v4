@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+    <h:head>
+        <title>Crear nivel</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <ui:include src="../../../../WEB-INF/supervisor/link_estilos.xhtml"/>
+
+        <ui:include src="../../../../WEB-INF/datatable/estilos.xhtml"/>
+
+        <f:event type="preRenderView" listener="#{loginController.verificarSession2()}"/>
+    </h:head>
+
+    <h:body>
+
+
+        <!-- NAVEGADOR -->
+        <ui:include src="../../../../WEB-INF/supervisor/nav/nav_sup_sec.xhtml"/>
+
+
+        <div class="container w-75 mt-5">
+
+            <div class="row">
+                <h1 class="col-12 pl-4 mt-2 mb-1">
+                    Crear Nivel             </h1>
+            </div>
+
+            <h:form class="p-3">
+
+                <div class="form-group">
+                    <h:outputLabel value="Nombre Nivel" for="nombreN"/>
+                    <h:inputText class="form-control" id="nombreN" value="#{categoriaController.nivel.nombreNivel}" />
+                    <h:message for="nombreN"/>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel value="Objetivos" for="objetivos"/>
+                    <h:inputText class="form-control" id="objetivos" value="#{categoriaController.nivel.objetivos}" />
+                    <h:message for="objetivos"/>
+                </div>   
+                <div class="form-group">
+                    <h:selectOneMenu>
+                        <h:outputLabel value="Lugar de entrenamiento" for="lugar"/>
+                        <f:selectItems value="" var="" itemValue="" itemLabel=""/>
+
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Lugar de entrenamiento" for="lugar"/>
+                    <h:inputText class="form-control" id="lugar" value="#{categoriaController.nivel.lugarIdLugar.nombreLugar}" />
+                    <h:message for="lugar"/>
+                </div> 
+                <div class="form-group">
+                    <h:outputLabel value="Profesor de nivel" for="profesor"/>
+                    <h:inputText class="form-control" id="profesor" value="#{categoriaController.nivel.idProfesor.documento.nombre1}" />
+                    <h:message for="profesor"/>
+                </div>    
+
+                <div class="row">
+                    <h:commandButton value="Guardar" class="btn btn-primary col-3 mx-auto" action="#{categoriaController.crearNivel()}"/>
+                </div>
+            </h:form>
+
+        </div>
+
+
+
+    </h:body>
+
+</html>

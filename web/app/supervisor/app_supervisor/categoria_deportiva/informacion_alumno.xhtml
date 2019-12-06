@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+    <head>
+        <title>Informacion alumnos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <ui:include src="../../../../WEB-INF/supervisor/link_estilos.xhtml"/>
+
+        <f:event type="preRenderView" listener="#{loginController.verificarSession2()}"/>
+    </head>
+    <h:body>
+
+        <!-- NAVEGADOR -->
+
+        <ui:include src="../../../../WEB-INF/supervisor/nav/nav_sup_sec.xhtml"/>
+
+
+        <h:form class="container pt-3">
+
+            <h:dataTable  value="" styleClass="table table-dark text-info">
+                <h:column>
+
+                    <a href="consultar_categoria.xhtml">Consultar</a>
+                </h:column>
+            </h:dataTable>
+            <h:dataTable value="#{categoriaController.listarAlum()}" var="lista" styleClass="table table-dark text-info">
+
+                <h:column>
+
+                    <f:facet name="header">Documento</f:facet> 
+
+                    <h:outputLabel id="idDoc" value="#{lista.documento.documento}"/>
+
+
+
+                </h:column>
+
+
+                <h:column>
+
+                    <f:facet name="header">Nombre</f:facet> 
+
+                    <h:outputLabel id="nombreC" value="#{lista.documento.nombre1}"/>
+
+                </h:column>
+                <h:column>
+
+                    <f:facet name="header">Apellido</f:facet> 
+
+                    <h:outputLabel id="apellido" value="#{lista.documento.apellido1}"/>
+
+                </h:column>
+                <h:column>
+
+                    <f:facet name="header">RH</f:facet> 
+
+                    <h:outputLabel id="rh" value="#{lista.documento.idtipoSangre.rh}"/>
+
+
+
+                </h:column>
+                <h:column>
+
+                    <f:facet name="header">Fecha Nacimiento</f:facet> 
+
+                    <h:outputLabel id="fecha" value="#{lista.documento.fechaNacimiento}">
+                        <f:convertDateTime pattern="yyyy-mm-dd"/>
+                    </h:outputLabel>
+
+
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>

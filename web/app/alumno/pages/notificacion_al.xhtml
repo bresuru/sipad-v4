@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Academia Deportiva Bocaneiros - Notificaciones</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <ui:include src="../../../WEB-INF/supervisor/link_estilos.xhtml"/>
+
+        <f:event type="preRenderView" listener="#{loginController.verificarSession()}"/>
+        <!-- Estilos propios -->
+        <link href="../../../resources/css/estilos.css" rel="stylesheet" type="text/css"/>
+
+    </h:head>
+
+    <h:body class="bg-secondary">		
+
+        <!-- Contenedor de toda la informacion y interaccion -->
+        <div class="container w-100 pr-3 pl-3 pb-3 bg-white">
+
+            <!-- Encavezado -->
+            <header class="row p-1">
+
+                <!-- Nombre de la academia deportiva -->
+                <div class="col-12 pl-4 justify-content-center">
+                    <!-- Logo de la academia -->
+                    <div class="h-100 justify-content-center">
+                        <div class="h-100 logo">
+                        </div>	
+                        <h2 class="col-12 d-md-none">Bocaneiros</h2>
+                        <h2 class="col-12 d-none d-md-block">Academia Deportiva Bocaneiros</h2>
+                    </div>
+                </div>
+
+            </header>
+
+            <!-- Navegacion	 -->
+            <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light row">
+
+                <!-- Boton de moviles -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navegador" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+                <!-- Botones de pantalla grande -->
+                <div class="collapse navbar-collapse" id="navegador">
+
+                    <!-- Botones de paginas -->
+                    <ul class="nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link " href="../indexAlumno.xhtml"><i class="fas fa-user-alt"></i> Perfil<span class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="info_profesor.xhtml"><i class="fas fa-address-book"></i> Profesor </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="torneo_al.xhtml"><i class="fas fa-trophy"></i> Torneos </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " href="evento_al.xhtml"><i class="fas fa-laugh"></i> Eventos </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="horario_al.xhtml"><i class="fas fa-calendar-alt"></i> Horario </a>
+                        </li> 
+
+                        <li class="nav-item">
+                            <a class="nav-link actual" href="notificacion_al.xhtml"><i class="fas fa-bell"></i> Notificación </a>
+                        </li> 
+
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link" href="../../../index.xhtml">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar sesion
+                            </a>    
+                        </li>
+                    </ul>
+
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+
+                </div>
+
+            </nav>
+            <!-- *******************Fin de la barra de nevegacion********************** -->
+            <div class="row">
+
+                <!-- Tipos de notificaciones -->
+                <div class="col-3">
+                    <div class="card col-12  text-dark bg-light mb-3">
+                        <div class="card-header">Tipos de noticicaciones</div>
+                        <div class="card-body">
+                            <h5 class="card-title text-white bg-primary p-1">Entrenamiento</h5>
+                            <h5 class="card-title text-white bg-danger p-1">Avisos inportantes</h5>
+                            <h5 class="card-title text-white bg-success p-1">Eventos</h5>
+                            <h5 class="card-title text-white bg-dark p-1">Reuniones</h5>
+                            <h5 class="card-title text-white bg-warning p-1">Torneos</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notificaciones -->
+                <div class="col-8 p-3 bg-white">
+                    <div class="card col-12  text-white bg-primary mb-3">
+                        <div class="card-header">Entrenamiento</div>
+                        <div class="card-body">
+                            <h5 class="card-title">En equipo</h5>
+                            <p class="card-text">Se hara un entrenamiento para mejorar el rendimiento de los equipos para los torneos. Se debe consultar el horario para saber cuando y donde es. </p>
+                        </div>
+                    </div>
+
+                    <div class="card col-12  text-white bg-danger mb-3">
+                        <div class="card-header">Aviso</div>
+                        <div class="card-body">
+                            <h5 class="card-title">EL profesor se lastimo</h5>
+                            <p class="card-text">EL profesor de la categoria deportiva se ha lastimado una pierna entonces se aprasara la clase. </p>
+                        </div>
+                    </div>
+
+                    <div class="card col-12  text-white bg-primary mb-3">
+                        <div class="card-header">Entrenamiento</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Problemas</h5>
+                            <p class="card-text">Debido a ciertos incovenientes la clase se aplaso dos dias. </p>
+                        </div>
+                    </div>
+
+                    <div class="card col-12  text-white bg-primary mb-3 ">
+                        <div class="card-header">Entrenamiento</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Proxima clase</h5>
+                            <p class="card-text">La clase se hara el dia 28 de junio del 2019. </p>
+                        </div>
+                    </div>
+
+                    <div class="card col-12  text-white bg-success mb-3">
+                        <div class="card-header">Evento</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Bingo 3000</h5>
+                            <p class="card-text">Este fin de semana se hara un bingo donde se rifara grandiosos premios como un balon y una bicicleta. </p>
+                        </div>
+                    </div>
+
+                    <div class="card col-12 text-white bg-dark mb-3">
+                        <div class="card-header">Reunion</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Prades de familia</h5>
+                            <p class="card-text">Se hara una reunion para hablar con los padres acerca de unos temas importantes. </p>
+                        </div>
+                    </div>
+
+                    <div class="card col-12  text-white bg-primary mb-3 ">
+                        <div class="card-header">Entrenamiento</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Mini-torneo</h5>
+                            <p class="card-text">Se hara un torneo pequeño la proxima clase contra los diferentes equipos que hay. </p>
+                        </div>
+                    </div>
+
+                    <div class="card col-12  text-white bg-warning mb-3 ">
+                        <div class="card-header">Torneo</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Nuevo torneo</h5>
+                            <p class="card-text">Se ha creado un torneo para la categoria futbol del nivel juvenil y hay inscripciones abiertas. </p>
+                        </div>
+                    </div>
+
+                    <div class="card col-12  text-white bg-primary mb-3 ">
+                        <div class="card-header">Entrenamiento</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Arqueros</h5>
+                            <p class="card-text">Se hara un entrenamiento a los arqueros para mejorar sus refejos. </p>
+                        </div>
+                    </div>
+
+                    <div class="card col-12  text-white bg-success mb-3">
+                        <div class="card-header">Evento</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Torneo de tekwondo</h5>
+                            <p class="card-text">Estan invitados a ver y apoyar a nuestros deportitas de tekwondo que estan participando en el torneo de movistar. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- **************** Pîe de pagina **************** -->
+            <footer>
+
+            </footer>
+
+        </div>	
+        <!-- Fin del contenedor de toda la informacion -->
+
+        <ui:include src="../../../WEB-INF/indexEst/footer.xhtml"/>
+
+        <!-- **************** Fin de todos los formularios *************** -->
+
+        <!-- ***************************** JavaScript ********************************** -->
+
+
+        <script src="../../../resources/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+        <script src="../../../resources/js/popper.min.js" type="text/javascript"></script>
+        <script src="../../../resources/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../../../resources/js/sweetalert2@8.js" type="text/javascript"></script>
+        <script src="../../../resources/js/all.min.js" type="text/javascript"></script>
+        <!-- ********************************************************************* -->
+
+    </h:body>
+</html>

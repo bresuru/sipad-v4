@@ -1,0 +1,25 @@
+
+.imagenPricipal{
+    max-height: 650px;
+    background: rgba(1,1,1,0.4);
+
+}
+
+.btn-principal{
+    
+    border-radius: 10px;
+    background: rgba(15,121,111,0.6);
+    
+}
+
+.btn-principal:hover{ 	
+    background:  rgba(15,121,111,1);
+    transition: 0.5s;
+}
+
+.text-principal{
+    color: rgba(15,121,111,1);
+}
+
+
+

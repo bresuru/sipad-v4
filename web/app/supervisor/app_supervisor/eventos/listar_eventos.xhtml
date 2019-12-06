@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <head>
+        <title>Listar Eventos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <ui:include src="../../../../WEB-INF/supervisor/link_estilos.xhtml"/>
+        <ui:include src="../../../../WEB-INF/datatable/estilos.xhtml"/>
+         <f:event type="preRenderView" listener="#{loginController.verificarSession2()}"/>
+    </head>
+    <body>
+        <!-- NAVEGADOR -->
+        <ui:include src="../../../../WEB-INF/supervisor/nav/nav_sup_sec.xhtml"/>
+
+        <div class="container w-100 mt-5">
+
+
+            <div class="row">
+                <h1 class="col-12 pl-4 mt-2 mb-2">
+                    Lista de Eventos
+                </h1>
+            </div>
+
+            <h:form class="p-3">
+
+                <h:dataTable value="#{eventoController.listarEventos()}" var="lista" id="eventos"
+                             styleClass="stripe alumnos w-100 table-success">
+
+                    <h:column>
+
+                        <f:facet name="header">Id Evento</f:facet>
+
+                        <h:outputFormat id="id_evento" value="#{lista.idEvento}"/>
+
+                    </h:column>
+
+                    <h:column>
+
+                        <f:facet name="header">Nombre Evento</f:facet>
+
+                        <h:outputText id="nombreT" value="#{lista.nombreEvento}"/>
+
+                    </h:column>
+
+                    <h:column>
+
+                        <f:facet name="header">Horario</f:facet>
+
+                        <h:outputText id="fchaIT" value="#{lista.horario}" a:type="date">
+                            <f:convertDateTime pattern="yyyy-dd-mm"/>
+                        </h:outputText>
+
+                    </h:column>
+
+                    <h:column>
+
+                        <f:facet name="header">Informacion</f:facet>
+
+                        <h:outputText id="fecaIT" value="#{lista.informacion}"/>
+
+                    </h:column>
+
+
+                    <h:column>
+
+                        <f:facet name="header">id_Supervisor</f:facet>
+
+                        <h:outputText id="fechaI" value="#{lista.idSupervisor.documento.nombre1}"/>
+
+                    </h:column>
+
+                    <h:column>
+
+                        <f:facet name="header">id_Lugar</f:facet>
+
+                        <h:outputText id="fecha" value="#{lista.idLugar}"/>
+
+                    </h:column>
+
+
+                    <!-- Botones -->
+
+                    <h:column>
+
+                        <f:facet name="header">Modificar</f:facet>
+
+                        <h:commandButton  value="Modificar" class="btn btn-success"
+                                          action="#{eventoController.consultarEvento(lista.idEvento)}"/>
+
+                    </h:column>
+
+                    <h:column>
+
+                        <f:facet name="header">Eliminar</f:facet>
+
+                        <h:commandButton value="Eliminar" class="btn btn-danger"
+                                         actionListener="#{eventoController.eliminarevento(lista.idEvento)}"/>
+                                               
+                    </h:column>
+
+                </h:dataTable>
+
+            </h:form>
+
+        </div>
+
+    </body>
+</html>

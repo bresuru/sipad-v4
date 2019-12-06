@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <head>
+        <title>Calendario</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div class="tab-pane fade bg-white w-100 h-100" id="nav-horario" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="col-md-4 float-left pb-3">
+                <h5 class="max-auto col-12 text-dark text-center pt-2">#{textSupp.infoCalendario}</h5>
+                <ul class="nav mr-auto">
+
+                    <h:outputLabel class="col-12"/>
+
+                    <!-- Boton de consultar horario -->
+                    <h:form class="col-12 text-center pb-2">
+                        <h:commandLink action="html/calendario/calendario.html" class="btn btn-outline-primary" target="controlador" value="#{textSupp.abrirCalend}"/> 
+                    </h:form>
+
+                </ul>	
+            </div>
+
+        </div>
+    </body>
+</html>

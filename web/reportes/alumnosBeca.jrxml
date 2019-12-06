@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5ca5d8f0-760d-42ae-9c87-cd53867f7e0d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="super" class="java.lang.String"/>
+	<field name="documento" class="java.lang.String"/>
+	<field name="nombre1" class="java.lang.String"/>
+	<field name="nombre2" class="java.lang.String"/>
+	<field name="apellido1" class="java.lang.String"/>
+	<field name="apellido2" class="java.lang.String"/>
+	<field name="fechaNacimiento" class="java.lang.String"/>
+	<field name="fotoPerfil" class="java.lang.String"/>
+	<field name="eps" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<staticText>
+				<reportElement x="115" y="35" width="391" height="44" forecolor="#FF0000" uuid="44645dcd-6227-4b54-ab6f-c0f8e516c5b1"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" size="30" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Club deportivo Bocaneiros]]></text>
+			</staticText>
+			<image>
+				<reportElement x="44" y="8" width="71" height="71" uuid="1c57b2b5-8f47-4b18-a373-c630c87d1953"/>
+				<imageExpression><![CDATA["C:\\Users\\MAGG\\Documents\\Imagenes\\imagenes\\bocaneiros.png.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="96" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="121" height="20" forecolor="#FF0000" uuid="39b2c1ce-143b-4300-8a16-c8550235236d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Reporte realizado por:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="163" height="20" forecolor="#000000" uuid="3b1c387d-f858-40ce-b97d-351f69f4d9c1"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Alumnos con becas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="64" width="450" height="20" uuid="c3b12a48-d728-44a3-a532-7fd234d08290"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Reporte de alumnos conn bacas para dar entrega de uniformes de la academia.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="40" width="100" height="20" forecolor="#FF0000" uuid="0cc686f4-44f8-4ed2-b216-22b5528f6a85"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Detalles:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="135" y="0" width="100" height="20" uuid="d1cca7fd-22cb-4479-93fa-983047fda965"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{super}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="15" y="0" width="100" height="20" forecolor="#FF0000" uuid="b23736cc-1750-4508-9cd8-95a12a446246"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[nombre1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" forecolor="#FF0000" uuid="70c07606-5c44-4c0e-99c1-323be2e96414"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[apellido1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="294" y="0" width="100" height="20" forecolor="#FF0000" uuid="afe6f0f4-face-46da-8761-e758b5b6c13e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="107" y="0" width="100" height="20" forecolor="#FF0000" uuid="d56e1db6-ac05-4655-a08b-8709c1bafbde"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[nombre2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="394" y="0" width="100" height="20" forecolor="#FF0000" uuid="f8d23605-ed67-4228-9ecf-41b874d948b1"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[direccion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="15" y="0" width="100" height="20" uuid="16bcdc49-db81-4017-80c9-0f2cf1a8b3b3"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="5ccedab0-f6d1-4020-801f-e11d7eb123a2"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apellido1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="0" width="100" height="20" uuid="ce7858e5-a0e9-4759-ba76-5c3f63aabea1"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="107" y="0" width="100" height="20" uuid="59e8697f-5563-433e-9fab-23b6885920ed"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="394" y="0" width="100" height="20" uuid="276ea9e9-b297-40ea-b9ca-0161dcb337f0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="26" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="14" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

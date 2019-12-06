@@ -1,0 +1,76 @@
+/*Fuente de texto */
+@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+/*Diseño de fondo*/
+body{
+    background-image: url(../images/images_sup/fondo-Supervisor.png);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+/*Titulo principal*/
+h1{
+    font-family: 'Courgette', cursive;
+
+}
+/*Zona donde va la foto del administrador*/
+
+/*Boton despleglabe*/
+a li .btn-desp{   
+    display: none;
+}
+a:hover li a{
+    display: block;
+}
+
+
+
+/*Circulo de fondo de los botones*/
+a.btn-r{
+    border-radius: 1000px;
+    height:100px;
+    width:100px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/*Imagenes que estan dentro de los circulos de botones*/
+a.btn img{
+    height:70px;
+    width:70px;
+    margin-top: 10px;
+}
+/*Mensaje de bienvenida*/
+
+/* Animacion con Click */
+
+
+/* display */
+.dis{
+    display: none;
+    transition: 0.5s;
+    color: rgb(0,0,0);
+}
+.disp:hover{
+    color: rgb(12, 183, 242);
+} 
+.disp:hover .dis{
+    transition: 0.5s;
+    display: block;
+} 
+.dis:hover{
+    color: rgb(12, 183, 242);
+}
+
+.imagen-fija{
+    background: fixed;
+}
+
+.images-circular{
+    border-radius: 8%;
+}
+
+.images-supp{
+    border-radius: 50% 10%;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+

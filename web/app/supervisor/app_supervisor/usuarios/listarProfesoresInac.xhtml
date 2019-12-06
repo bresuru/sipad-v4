@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      >
+
+    <h:head>
+        <title>Lista de profesores activos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <ui:include src="../../../../WEB-INF/supervisor/link_estilos.xhtml"/>
+
+        <ui:include src="../../../../WEB-INF/datatable/estilos.xhtml"/>
+        
+        <f:event type="preRenderView" listener="#{loginController.verificarSession2()}"/>
+    </h:head> 
+
+    <f:view locale="es">
+
+        <h:body>
+
+            <!-- Encabezado -->
+            <div></div>
+
+            <!-- NAVEGADOR -->
+            <ui:include src="../../../../WEB-INF/supervisor/nav/nav_sup_sec.xhtml"/>
+
+            <!-- Formulario de creacion de categoria deportiva -->
+            <div class="container w-100 mt-5 bg-white">
+
+                <div class="row text-center">
+                    <h1 class="col-12 pl-4 mt-2 mb-2">
+                        Lista de profesores
+                    </h1>
+                </div>
+
+                <div class=" col-12 bg-primary p-0  text-center text-ligh">
+                    <h:messages globalOnly="true" showDetail="true" 
+                                styleClass="text-white pt-2"/>
+                </div>
+
+                <h:form class="p-3">
+
+                    <h:dataTable id="alumnos" value="#{usuariosController.listarProfesores(2)}" 
+                                 var="profe" styleClass="stripe alumnos w-100 table-success"
+
+                                 >
+
+                        <h:column>
+
+                            <f:facet name="header">#{textSupp.documentoI}</f:facet>
+
+                            <h:outputLabel value="#{profe.documento.documento}"/>
+
+                        </h:column>                      
+
+                        <h:column>
+
+                            <f:facet name="header">#{textSupp.nombre}</f:facet>
+
+                            <h:outputLabel value="#{profe.documento.nombre1} #{profe.documento.nombre2}"/>
+
+                        </h:column>
+
+                        <h:column>
+
+                            <f:facet name="header">#{textSupp.apellidoUsu}</f:facet>
+
+                            <h:outputLabel value="#{profe.documento.apellido1} #{profe.documento.apellido2}"/>
+
+                        </h:column> 
+                        
+                        <h:column>
+
+                            <f:facet name="header">#{textSupp.Especialidad}</f:facet>
+
+                            <h:outputLabel value="#{usuariosController.especilidadPro(profe.idProfesor)}"/>
+
+                        </h:column>
+
+                        <h:column>
+
+                            <f:facet name="header">#{textSupp.estado}</f:facet>
+
+                            <h:outputLabel value="#{profe.documento.idEstadoUsuario.estado}"/>
+
+                        </h:column> 
+
+                        <!-- Botones de interracion -->
+                        <h:column>
+
+                            <f:facet name="header">#{textSupp.activar}</f:facet>
+
+                            <h:commandLink value="#{textSupp.activar}" class="btn btn-warning"
+                                           action="#{usuariosController.activarUsuario(profe.documento.documento)}"
+                                           />
+
+                        </h:column>
+
+                        <h:column>
+
+                            <f:facet name="header">#{textSupp.eliminar}</f:facet>
+
+                            <h:commandLink value="#{textSupp.eliminar}" class="btn btn-danger"
+                                           actionListener="#{usuariosController.eliminarProfesor(profe.idProfesor)}"
+                                           />
+
+                        </h:column>
+
+
+                    </h:dataTable>
+
+                </h:form>
+
+            </div>
+
+
+        </h:body>
+
+    </f:view>
+
+</html>

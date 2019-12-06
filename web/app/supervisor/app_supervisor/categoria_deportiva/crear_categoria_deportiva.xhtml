@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      >
+
+    <h:head>
+        <title>Crear categoria deportiva</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <ui:include src="../../../../WEB-INF/supervisor/link_estilos.xhtml"/>
+
+        <ui:include src="../../../../WEB-INF/datatable/estilos.xhtml"/>
+
+        <f:event type="preRenderView" listener="#{loginController.verificarSession2()}"/>
+
+    </h:head>
+
+    <h:body>
+
+        <!-- Encabezado -->
+        <div></div>
+
+        <!-- NAVEGADOR -->
+        <ui:include src="../../../../WEB-INF/supervisor/nav/nav_sup_sec.xhtml"/>
+
+        <!-- Formulario de creacion de categoria deportiva -->
+        <div class="container w-75 mt-5">
+
+            <div class="row">
+                <h1 class="col-12 pl-4 mt-2 mb-1">
+                    Formulario de creación de categoria deportiva
+                </h1>
+            </div>
+
+            <h:form class="p-3">
+                <div class="form-group">
+                      <h:outputLabel for="NombreCD" value="Nombre de categoria deportiva"/> 
+                      <h:inputText class="form-control" id="txttituloCD" a:pattern="[A-Za-z - ]{1,100}"  value="#{categoriaController.categoriaDeportiva.nombreCategoria}" required="true"/>
+                </div>
+
+                <div class="row">
+                    <h:commandButton value="Guardar" class="btn btn-primary col-3 mx-auto" action="#{categoriaController.crearCategoria()}"/>
+                </div>
+            </h:form>
+
+        </div>
+
+
+
+    </h:body>
+
+
+</html>

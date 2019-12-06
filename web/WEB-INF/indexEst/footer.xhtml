@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </h:head>
+
+    <f:view locale="#{lenguajeController.seleccionarIdioma}">
+
+        <h:body>
+            <footer class="row p-3 bg-dark">
+
+
+
+                <div class="col-12 text-center text-light">
+                    <h:outputText value="#{textSupp.academiaDeportivaB}"/>
+                </div>
+
+                <div class="col-12 text-center text-light">
+                    <h:outputText value="#{textSupp.direccion}: "/>
+                </div>
+
+                <div class="col-12 text-center text-light">
+                    <h:outputText value="#{textSupp.telefono}: "/>
+                </div>
+
+                <h:form id="form-logout" class="col-12 text-center text-light">
+
+                    <h:outputText value="#{textSupp.idioma}: "/>
+
+                    <button type="button" class="btn p-0 dropdown-toggle  text-white"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-globe"></i>
+                    </button>
+
+                    <div class="dropdown-menu p-0" aria-labelledby="dropdownMenuButton">
+
+                        <c:forEach items="#{lenguajeController.listaIdioma}" var="idioma">
+
+                            <h:commandLink
+                                class="dropdown-item" actionListener="#{lenguajeController.cambiarIdioma(idioma)}"
+                                value="#{idioma.language}"
+                                />
+
+                        </c:forEach>
+
+                    </div>
+
+                </h:form>
+
+            </footer>
+        </h:body>
+    </f:view>
+</html>

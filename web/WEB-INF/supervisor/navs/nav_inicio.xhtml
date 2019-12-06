@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <head>
+        <title>Inicio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <h:body>
+        <div class="tab-pane fade show active bg-white w-100 h-100 pb-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+            <div class="row h-100">
+
+                <div class="col-3">
+                    <div class="h-100 text-center pt-4">
+                        <div class="row no-gutters">
+                            <div class="col-12 text-danger">
+                                <h2 class="fas fa-arrow-up"></h2>
+                                <h:outputText value="  #{textSupp.arribaELOD}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-9 h-100">
+                    <div class="h-100">
+                        <div class="row no-gutters">
+                            <div class="col-2 h-100 pt-2">
+                                <img src="../../../resources/images/Itachi_Uchiha_HD.png" class="w-100 h-100" alt="..."/>
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body row">
+                                    <h5 class="col-4 col-md-2">#{textSupp.nombre}</h5>
+                                    <h:outputText class="col-8 col-md-10" value="Itachi Uchiha."/>
+                                    <h5 class="col-4 col-md-2">#{textSupp.cargo}</h5>
+                                    <h:outputText class="col-8 col-md-10" value="Gerente."/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </h:body>
+
+</html>

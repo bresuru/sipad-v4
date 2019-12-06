@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>Academia Deportiva Bocaneiros - Inicio</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="resources/css/animate.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/all.min.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/index_estilos.css" rel="stylesheet" type="text/css"/>
+
+    </h:head>
+    <f:view locale="#{lenguajeController.seleccionarIdioma}">
+        <h:body class="bg-white">		
+
+            <!-- Contenedor de toda la informacion y interaccion -->
+            <div class="container w-100 pr-3 pl-3">
+
+                <!-- Encavezado -->
+                <header class="row p-1">
+
+                    <!-- Nombre de la academia deportiva -->
+                    <div class="col-12 pl-4 justify-content-center ">
+                        <!-- Logo de la academia -->
+                        <div class="h-100 justify-content-center">
+                            <div class="h-100 logo w-100  col-3 col-md-1">
+                            </div>	
+                            <h2 class="col-12 pt-3 d-md-none">Bocaneiros</h2>
+                            <h2 class="col-12 pt-3 d-none d-md-block text-center">#{lenguajeEdit.academiaDeportivaBocaneiros}</h2>
+                        </div>
+                    </div>
+
+                </header>
+
+                <!-- Navegacion	 -->
+                <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light row">
+
+                    <!-- Boton de moviles -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navegador" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Botones de pantalla grande -->
+                    <div class="collapse navbar-collapse" id="navegador">
+
+                        <!-- Botones de paginas -->
+                        <ul class="nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link actual" href="#"><i class="fas fa-home"></i> #{indexTextEdit.inicio}<span class="sr-only">(current)</span></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="app/pages_index/torneo_index.xhtml"><i class="fas fa-trophy"></i> #{indexTextEdit.torneos}</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="app/pages_index/categoriaDeportiva_index.xhtml"><i class="fas fa-futbol"></i> #{indexTextEdit.categoriaDeportiva} </a>
+                            </li> 
+
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link" href="app/pages_index/inscripcion_index.xhtml">
+                                    <i class="fas fa-file-signature"></i> #{indexTextEdit.inscrpiciones}
+                                </a>    
+                            </li>
+
+
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-key"></i> #{indexTextEdit.ingresar}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" data-toggle="modal" href="#iniciar">
+                                        #{indexTextEdit.ingresar}
+                                    </a>
+
+                                    <a class="dropdown-item" href="app/pages_index/inscripcion_index.xhtml">
+                                        #{indexTextEdit.registrarse}
+                                    </a>
+
+
+                                </div>
+                            </li>
+
+                        </ul>
+
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Buscar.." aria-label="Search"/>
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+
+                    </div>
+
+                </nav>
+
+                <div class="row">
+                    <h:messages globalOnly="true" showDetail="true" 
+                                class="nav-link bg-success text-white col-12 mb-0" />
+                </div>
+
+                <!-- **************** Imagen de portada de eventos u deporte ************** -->
+                <div id="present" class="carousel slide row" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                    </ol>
+                    <!-- Imagenes de portada -->
+                    <div class="carousel-inner">
+
+                        <!-- Imagen 1 -->
+
+
+                        <!-- Imagen 2 -->
+                        <div class="carousel-item active" data-interval="10000">
+                            <img src="resources/images/fondo-futbol.jpg" 
+                                 class="d-block w-100 imgP imagenPricipal" alt="..."/>
+
+                            <div class="carousel-caption h-100 w-75  pt-5 transi">
+                                <h1 class="pb-3 pt-4">#{textSupp.descripCD}</h1>
+                                <p class="d-none d-lg-block">#{textSupp.infoCrearUsu}</p>
+
+                                <div class="row d-none d-md-block mt-5 pt-4"></div>
+                                <div class="row d-none d-md-block mt-5 pt-4"></div>
+
+                                <div class="row pt-5 justify-content-center">
+                                    <div class="row pt-5 tex-center">
+                                        <div class="mx-auto">
+                                            <a href="app/pages_index/inscripcion_index.xhtml" 
+                                               class="btn text-white pl-5 pr-5 btn-principal">
+                                                <h3 class="d-none d-sm-block">#{textSupp.inscripcion}</h3>
+                                                <h5 class="d-sm-none">#{textSupp.inscripcion}</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div> 
+
+                    <!-- Botones de cambiar imagen -->
+                    <a class="carousel-control-prev" href="#present" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#present" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+
+                </div>
+                <!-- ************************Fin************************* -->
+
+                <!-- Biootones de incripcion y quines somos -->
+                <div class="p-5 bg-light row">
+
+                    <!-- Botones de inscripcion -->
+                    <div class="coil-12 col-lg-4 text-center mt-1 mb-1">
+
+                        <a class="btn btn-light mx-auto" href="app/pages_index/inscripcion_index.xhtml">
+                            <h1 class=" text-principal">
+                                <i class="fas fa-user-edit"></i>
+                            </h1>
+                            <h4 class="text-principal">
+                                #{textSupp.inscripcion}
+                            </h4>
+                        </a>
+
+                    </div>
+
+                    <!-- Botones de deportes -->
+                    <div class="col-12 col-lg-4 text-center mt-1 mb-1">
+
+                        <a class="btn btn-light mx-auto" href="app/pages_index/categoriaDeportiva_index.xhtml">
+                            <h1 class=" text-principal">
+                                <i class="fas fa-futbol"></i>
+                            </h1>
+                            <h4 class="text-principal">
+                                #{textSupp.categoriaDeportiva}
+                            </h4>
+                        </a>
+
+                    </div>
+
+                    <!-- Botones de contactenos-->
+                    <div class="col-12 col-lg-4 text-center mt-1 mb-1">
+
+                        <a class="btn btn-light mx-auto">
+                            <h1 class=" text-principal">
+                                <i class="far fa-edit"></i>
+                            </h1>
+                            <h4 class="text-principal">
+                                #{textSupp.quinesSomos}
+                            </h4>
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- ************************* Fichas de contenido **************** -->
+                <div class="row">
+
+                    <!-- Ficha de categorias deportivas -->
+
+
+                    <!-- Ficha de torneos -->
+                    <div class="col-12 col-md-6 col-lg-4 mb-3">
+                        <div class="bg-light espF">
+                            <div >
+                                <img src="resources/images/index_images/porrasTorneo.jpg" class="card-img-top w-100" alt="..."/>
+                            </div>
+                            <div class="p-3">
+                                <h5 class="card-title">#{textSupp.torneos}</h5>
+                                <p class="card-text"> 
+                                    Te presentamos los diferentes torneos en los que la Academia Bocaneiros esta participando. 
+                                </p>
+                                <a href="app/pages_index/torneo_index.xhtml" class="btn btn-primary">#{textSupp.masInfo}</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ficha de informacion de la acedemia deportiva -->
+
+
+                </div>
+                <!-- *******************Fin de las fichas********************** -->
+
+
+                <!-- **************** Pîe de pagina **************** -->
+                <ui:include src="WEB-INF/indexEst/footer.xhtml"/>
+
+            </div>	
+            <!-- Fin del contenedor de toda la informacion -->
+
+
+            <!-- ***************** Formularios **************** -->
+            <!-- formulario de iniciar sesion -->
+            <div class="modal fade" id="iniciar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="row">
+                                <h4 class="modal-title col-12 text-center" id="exampleModalLabel">
+                                    #{textSupp.iniciarS}
+                                </h4>
+                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"></span>
+                            </button>
+                        </div>
+
+                        <h:form class="modal-body was-validated">
+
+                            <div class="p-1 pl-3 pr-3" action="POST">
+                                <div class="form-group row">
+                                    <h:outputLabel value="#{textSupp.documentoI}" for="doc"/>                                                
+
+                                    <h:inputText class="form-control w-100" id="usuario" 
+                                                 value="#{loginController.login.usuario}"  required="true"/>
+                                    <h:message for="usuario"/>
+                                </div>
+                                <div class="form-group row">
+                                    <h:outputLabel value="#{textSupp.contasema}" for="pass"/>
+                                    <h:inputText a:type="password" class="form-control" id="pass" 
+                                                 value="#{loginController.login.contrasena}"/>
+                                    <h:message for="pass"/>
+                                </div>
+
+                                <div class="col-12 text-center">
+                                    <h:commandLink class="btn btn-primary col-3" value="#{textSupp.iniciarS}"
+                                                   action="#{loginController.iniciarSesion()}"
+                                                   />
+                                </div>	
+                                <div class="form-group row">
+                                    <ul class="nav mr-auto">
+                                        <li class="nav-item active">
+                                            <a class="nav-link actual" data-toggle="modal" href="#recuperar">
+                                                #{textSupp.olvidePass}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </h:form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Fin formulario de ingreso  -->
+
+            <!-- Formulario de recuperacion de contraseña -->
+            <div class="modal fade" id="recuperar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="row">
+                                <h4 class="modal-title col-12 text-center" id="exampleModalLabel">Cambio de contraseña</h4>
+                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <h:form class="modal-body">
+
+                            <div class="p-1 pl-3 pr-3" action="POST">
+                                <div class="form-group row">
+                                    <div class="mb-3 col-12">
+                                        <h:outputLabel for="correo"  value="#{textSupp.correo}"/>
+                                        <h:inputText a:type="mail" class="form-control" id="correo" value="#{mailController.correo.para}" required="true"/>
+                                        <h:message for="correo"/>
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <h:outputLabel for="doc" value="#{textSupp.documentoI}"/>
+                                        <h:inputText id="doc" class="form-control" required="true" value="#{mailController.usuario.documento}"/>
+                                        <h:message for="correo"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <h:commandButton class="btn btn-primary col-3" value="#{textSupp.Enviar}"
+                                                     actionListener="#{mailController.recupararContraseña()}"/>
+                                </div>	
+                            </div>
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- **************** Fin de todos los formularios *************** -->
+
+            <!-- ***************************** JavaScript ********************************** -->
+            <script src="resources/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+            <script src="resources/js/popper.min.js" type="text/javascript"></script>
+            <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="resources/js/sweetalert2@8.js" type="text/javascript"></script>
+            <script src="resources/js/all.min.js" type="text/javascript"></script>
+            <!-- ********************************************************************* -->
+
+        </h:body>
+    </f:view>
+</html>

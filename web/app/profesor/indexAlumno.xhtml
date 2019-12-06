@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>Academia Deportiva Bocaneiros - Deportista</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+        <ui:include src="../../WEB-INF/supervisor/link_estilos_norm.xhtml"/>
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"/>
+
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="../../resources/datatable/js/activartabla.js" type="text/javascript"></script>
+
+
+        <!-- Estilos propios -->
+        <link href="../../resources/css/estilos.css" rel="stylesheet" type="text/css"/>
+
+        <f:event type="preRenderView" listener="#{loginController.verificarSession()}"/>
+
+    </h:head>
+
+    <h:body>		
+
+        <!-- Contenedor de toda la informacion y interaccion -->
+        <div class="container w-100 pr-3 pl-3 pb-3 bg-white">
+
+            <!-- Encabezado -->
+            <header class="row p-1">
+
+                <!-- Nombre de la academia deportiva -->
+                <div class="col-12 pl-4 justify-content-center">
+                    <!-- Logo de la academia -->
+                    <div class="h-100 justify-content-center">
+                        <div class="h-100 logo">
+                        </div>	
+                        <h2 class="col-12 d-md-none">Bocaneiros</h2>
+                        <h2 class="col-12 d-none d-md-block">Academia Deportiva Bocaneiros</h2>
+                    </div>
+                </div>
+
+            </header>
+
+            <!-- Navegacion	 -->
+            <!-- Navegacion	 -->
+            <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light row">
+
+                <!-- Boton de moviles -->
+                <h:form>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navegador" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+                        <span class="navbar-toggler-icon"></span>
+
+                    </button>
+                </h:form>
+                <!-- Botones de pantalla grande -->
+                <div class="collapse navbar-collapse" id="navegador">
+
+                    <!-- Botones de paginas -->
+                    <ul class="nav mr-auto">
+
+                        <h:form class="nav mr-auto">
+                            <li class="nav-item active">
+                                <h:commandLink class="nav-link " value="" action="indexProfesor" >   
+                                    <i class="fas fa-user-alt"></i>
+                                    #{lenguajeEdit.perfil}
+                                </h:commandLink>
+                            </li>
+                            <li class="nav-item active">
+                                <h:commandLink class="nav-link actual" value="" action="alumnosProfesor" >  
+                                    <i class="fas fa-users"></i>
+                                    #{lenguajeEdit.alumnos}
+                                </h:commandLink>
+                            </li>
+                            <li class="nav-item active">
+                                <h:commandLink class="nav-link" action="torneoProfesor" > 
+                                    <i class="fas fa-trophy"></i>
+                                    #{lenguajeEdit.torneos}
+                                </h:commandLink>   
+                            </li>
+                            <li class="nav-item active">
+                                <h:commandLink class="nav-link" value="" action="eventoProfesor" > 
+                                    <i class="far fa-laugh-beam"></i>
+                                    #{lenguajeEdit.eventos}
+                                </h:commandLink>
+                            </li>
+                            <li class="nav-item active">
+                                <h:commandLink class="nav-link" value="" action="horarioProfesor" >  
+                                    <i class="fas fa-calendar-check"></i>
+                                    #{lenguajeEdit.horario}
+                                </h:commandLink>
+                            </li>
+                            <li class="nav-item active">
+                                <h:commandLink class="nav-link" value="" action="notificacionProfesor" >   
+                                    <i class="fas fa-bell"></i>
+                                    #{lenguajeEdit.notificacion}
+                                </h:commandLink>
+                            </li>
+
+                            <!-- Boton de cerrar session -->
+                            <li class="nav-item dropdown ">
+
+                                <h:commandLink 
+                                    value=""
+                                    class="nav-link text-secondary"
+                                    action="#{loginController.cerrarSession()}">
+                                    <i class="fas fa-sign-out-alt"/>
+                                    #{textSupp.cerrarSession}
+                                </h:commandLink>    
+                            </li>
+                        </h:form>
+                    </ul>
+
+
+                    <h:form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="#{lenguajeEdit.buscar}." aria-label="Search"/>
+                        <h:commandLink class="btn btn-success my-2 my-sm-0 " type="submit">
+                            <i class="fas fa-search"></i>
+                        </h:commandLink>
+                    </h:form>
+
+                </div>
+
+            </nav>
+
+
+            <!-- Informaion del deportista -->
+            <div class="row">
+
+                <h1 class="col-12 text-success text-center">
+                    #{textSupp.PerfilDeportista}
+                </h1>
+
+                <h:form class="card mb-3 p-3 col-12 fondo-prefil1" id="cambiar_fondo">
+                    <div class="row no-gutters tras">
+                        <div class="col-md-4">
+                            <h:graphicImage value="#{usuariosController.usuarios.fotoPerfil}" class="card-img"/>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-body">
+
+                                <h5 class="card-title">Nombre completo: </h5>
+                                <h:outputText class=" pb-5 mt-0 pt-0"
+                                              value="#{usuariosController.usuarios.nombre1}
+                                              #{usuariosController.usuarios.nombre2}
+                                              #{usuariosController.usuarios.apellido1}
+                                              #{usuariosController.usuarios.apellido2}"
+                                              />
+
+                                <h5 class="card-title mt-3">#{textSupp.documentoI}:</h5>
+                                <h:outputText class="card-text" value="#{usuariosController.usuarios.documento}"/>
+
+                                <h5 class="card-title mt-3">#{textSupp.categoriaDeportiva}:</h5>
+                                <h:outputText class="card-text"
+                                              value="#{usuariosController.alumno.idNivelCategoria.idCategoria.nombreCategoria}"
+                                              />
+
+                                <h5 class="card-title mt-3">#{textSupp.nivelCategoria}: </h5>
+                                <h:outputText class="card-text"
+                                              value="#{usuariosController.alumno.idNivelCategoria.nombreNivel}"
+                                              />
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">#{textSupp.direccion}: </h5>
+                                <p class="card-text">Calle 65 A sur f # 23-76</p>
+                                <h5 class="card-title">#{textSupp.fechaNacimiento}: </h5>
+                                <h:outputText value="#{usuariosController.usuarios.direccion}" a:type="date" class="card-text">
+                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                </h:outputText>
+                                <h5 class="card-title">#{textSupp.telefono}: </h5>
+                                <h:outputText value="#{usuariosController.usuarios.telefono}" class="card-text"/>
+                                <h5 class="card-title">#{textSupp.tipoSangre}: </h5>
+                                <h:outputText value="#{usuariosController.usuarios.idtipoSangre.rh}" class="card-text"/>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </h:form>
+
+                <!-- Descripcion del deportista -->
+                <div class="card mb-3 w-100 bg-light">
+                    <div class="row no-gutters w-100">
+                        <div class="col-md-12 text-center">
+                            <div class="card-body">
+                                <h3 class="card-title text-success">#{textSupp.descripCD}</h3>
+                                <h:outputText value="#{usuariosController.alumno.descripcion}"/>
+
+                                <h:form class="row text-center mt-4">
+
+                                    <div class="col-12">
+                                        <h:commandButton value="#{textSupp.modificar}" type="button" 
+                                                         class="btn btn-primary" a:data-toggle="modal" a:data-target="#editar"/>
+                                    </div>
+
+                                </h:form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-3 w-100 bg-light">
+                    <div class="row no-gutters w-100">
+                        <div class="col-md-12 text-center">
+                            <div class="card-body">
+                                <h3 class="card-title text-success">#{textSupp.Fallas}</h3>
+                                <h:outputText value="#{usuariosController.alumno.fallas}"/>
+
+                                <h:form class="row text-center mt-4">
+
+                                    <div class="col-12">
+                                        <h:commandButton value="#{textSupp.modificar}" type="button" 
+                                                         class="btn btn-warning" a:data-toggle="modal" a:data-target="#editarFallas"/>
+                                    </div>
+
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Asistencia del estudiante -->
+
+                <!-- ***************** Fin de la lista de asistencia del deportista **************** -->
+
+                <!-- ***************** Torneos en los que el deportista parcipo ************************ -->
+                <div class="card mb-3 w-100 mt-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-12">
+                            <h:form class="card-body">
+                                <h3 class="card-title text-center text-success p-2">
+                                    #{textSupp.torneos}
+                                </h3>
+
+                                <!-- Tabla de asistencia del deportista -->
+                                <h:dataTable value="#{usuariosController.listaAlumnoT()}" var="at"
+                                             class="table dt-responsive  alumnos">
+
+                                    <h:column>
+
+                                        <f:facet name="header">#{textSupp.nombreTo}</f:facet>
+
+                                        <h:outputText value="#{at.torneoIdTorneo.nombreTorneo}"/>
+
+                                    </h:column>
+
+                                    <h:column>
+
+                                        <f:facet name="header">#{textSupp.fechaInTo}</f:facet>
+
+                                        <h:outputText value="#{at.torneoIdTorneo.fechaInicio}" a:type="date">
+                                            <f:convertDateTime pattern="yyyy-mm-dd"/>
+                                        </h:outputText>
+
+                                    </h:column>
+
+                                    <h:column>
+
+                                        <f:facet name="header">#{textSupp.fechaFinTo}</f:facet>
+
+                                        <h:outputText value="#{at.torneoIdTorneo.fechaFinal}" a:type="date">
+                                            <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                        </h:outputText>
+
+                                    </h:column>
+
+                                    <h:column>
+
+                                        <f:facet name="header">#{textSupp.lugarTor}</f:facet>
+
+                                        <h:outputText value="#{at.torneoIdTorneo.idLugarTorneo.nombreLugarTorneo}"/>
+
+                                    </h:column>
+
+                                    <h:column>
+
+                                        <f:facet name="header">#{textSupp.decripcionTo}</f:facet>
+
+                                        <h:outputText value="#{at.torneoIdTorneo.descripcionTorneo}"/>
+
+                                    </h:column>
+
+                                    <h:column>
+
+                                        <f:facet name="header">#{textSupp.consultar}</f:facet>
+
+                                        <h:commandButton class="btn btn-warning" value="#{textSupp.consultar}"/>
+
+
+
+                                    </h:column>
+
+                                </h:dataTable>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <!-- *******************Fin de las fichas********************** -->
+
+
+            <!-- **************** Pîe de pagina **************** -->
+            <footer>
+
+            </footer>
+
+        </div>	
+        <!-- Fin del contenedor de toda la informacion -->
+
+        <!-- Editar Modal -->
+        <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">#{textSupp.modificar} #{textSupp.descripCD}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                        </button>
+                    </div>
+                    <h:form class="modal-body">
+
+                        <h:inputHidden value="#{usuariosController.usuarios.documento}"/>
+                        <h:inputHidden value="#{usuariosController.alumno.idAlumno}"/>
+
+                        <div class="mb-3">
+                            <h:outputLabel for="nombreU" value="#{textSupp.descripCD}: "/>
+                            <h:inputText class="form-control" 
+                                         value="#{usuariosController.alumno.descripcion}" 
+                                         id="nombreU" required="true"/>
+                            <h:messages for="nombreU" showDetail="true"/>
+                        </div>
+
+                        <div class="mb-4 mt-4 text-center">
+                            <h:commandButton value="#{textSupp.modificar}"
+                                             class="btn btn-success"
+                                             actionListener="#{usuariosController.actualizarDescripionAlumno()}"
+                                             />
+                        </div>
+
+                    </h:form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Editar fallas Modal -->
+        <div class="modal fade" id="editarFallas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>#{textSupp.modificar} #{textSupp.Fallas}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                        </button>
+                    </div>
+                    <h:form class="modal-body">
+
+                        <h:inputHidden value="#{usuariosController.usuarios.documento}"/>
+                        <h:inputHidden value="#{usuariosController.alumno.idAlumno}"/>
+
+                        <div class="mb-3">
+                            <h:outputLabel for="nombreU" value="#{textSupp.Fallas}: "/>
+                            <h:inputText class="form-control" a:type="number"
+                                         value="#{usuariosController.alumno.fallas}" 
+                                         id="nombreU" required="true"/>
+                            <h:messages for="nombreU" showDetail="true"/>
+                        </div>
+
+                        <div class="mb-4 mt-4 text-center">
+                            <h:commandButton value="#{textSupp.modificar}"
+                                             class="btn btn-success"
+                                             actionListener="#{usuariosController.actualizarFallasAlumno()}"
+                                             />
+                        </div>
+
+                    </h:form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- **************** Fin de todos los formularios *************** -->
+
+        <!-- ***************************** JavaScript ********************************** -->
+        <!-- ********************************************************************* -->
+        <ui:include src="../../WEB-INF/indexEst/footer.xhtml"/>
+
+    </h:body>
+</html>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Academia Deportiva Bocaneiros - Profesor</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <ui:include src="../../WEB-INF/supervisor/link_estilos.xhtml"/>
+
+        <ui:include src="../../WEB-INF/datatable/estilos.xhtml"/>
+
+        <link rel="stylesheet" href="../../resources//css/estilosProfesor.css"/>
+
+        <f:event type="preRenderView" listener="#{loginController.verificarSession()}"/>
+
+    </h:head>
+    <h:body>
+
+        <!--Contenedor de toda la informacion e interaccion-->
+        <div class="container w-100 pr-3 pl-3 pb-3 container">
+
+            <!--Encabezado-->
+            <header class="row p-1">
+
+                <!-- Nombre de la academia deportiva -->
+                <div class="col-12 pl-4 justify-content-center">
+                    <!-- Logo de la academia -->
+                    <div class="h-100 justify-content-center">
+                        <div class="h-100 logo">
+                        </div>	
+                        <h2 class="col-12 d-md-none">Bocaneiros</h2>
+                        <h2 class="col-12 d-none d-md-block">#{lenguajeEdit.academiaDeportivaBocaneiros}</h2>
+                    </div>
+                </div>
+
+            </header>
+
+            <ui:include src="../../WEB-INF/profesor/navProfesor.xhtml"/>
+
+            <!-- Informacion del profesor -->
+            <div class="row">
+
+                <h1 class="col-12 text-success mb-0 text-center bg-white">
+                    #{lenguajeEdit.perfilProfesor}
+                </h1>
+
+                <div class="card mb-3 p-3 col-12 fondo-prefil1" id="cambiar_fondo">
+                    <div class="row no-gutters tras">
+                        <div class="col-md-4">
+                            <h:graphicImage value="#{user.getFotoPerfil()}" class="card-img"/>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">#{lenguajeEdit.nombreApellidos} </h5>
+
+                                <h:outputText class=" pb-5 mt-0 pt-0"
+                                              value="#{user.getNombre1()}
+                                              #{user.getNombre2()}
+                                              #{user.getApellido1()}
+                                              #{user.getApellido2()}"
+                                              />
+
+                                <h5 class="card-title">#{textSupp.documentoI} </h5>
+                                <h:outputText class=" pb-5 mt-0 pt-0"
+                                              value="#{user.getDocumento()}"
+                                              />
+
+                                <h5 class="card-title">#{lenguajeEdit.categoriaDeportivaCargo} </h5>
+                                <p class="card-text">Futbol</p>
+                                <h5 class="card-title">#{lenguajeEdit.nivelDeCategoria} </h5>
+                                <p class="card-text">Juvenil</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">#{textSupp.direccion}: </h5>
+                                <h:outputText value="#{user.getDireccion()}" class="card-text"/>
+                                <h5 class="card-title">#{textSupp.fechaNacimiento}: </h5>
+                                <h:outputText value="#{user.getFechaNacimiento()}" a:type="date" class="card-text">
+                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                </h:outputText>
+                                <h5 class="card-title">#{textSupp.telefono}: </h5>
+                                <h:outputText value="#{user.getTelefono()}" class="card-text"/>
+                                <h5 class="card-title">#{textSupp.tipoSangre}: </h5>
+                                <h:outputText value="#{user.getIdtipoSangre().getRh()}" class="card-text"/>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <h:form>
+                        <div class="row text-right">
+
+                            <div class="col-12">
+                                <h:commandLink class="btn btn-outline-success" action="actualizarInformacion?faces-redirect=true">
+                                    <i class="fas fa-user-edit"></i>
+                                </h:commandLink>
+                            </div>
+
+                        </div>
+                    </h:form>
+
+                </div>
+
+                <!-- Descripcion de deportista -->
+
+            </div>
+
+
+            <!-- *******************Fin de las fichas********************** -->
+
+
+
+            <!-- **************** Pîe de pagina **************** -->
+
+        </div>	
+        <!-- Fin del contenedor de toda la informacion -->
+        <div class="m-5 p-4">
+
+        </div>
+        <ui:include src="../../WEB-INF/indexEst/footer.xhtml"/>
+
+
+    </h:body>
+
+</html>

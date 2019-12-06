@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <head>
+        <title>Eventos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+
+        <div class="tab-pane fade bg-white w-100 h-100" id="nav-evento" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="col-md-4 float-left pb-3">
+                <h6 class="max-auto col-12 text-primary text-center pt-2">#{textSupp.queDeseasHacer}</h6>
+                <ul class="nav mr-auto">
+
+                    <!-- Boton de crear evento -->
+                    <li class="nav-item col-6" title="Crear nueva categoria deportiva">
+                        <a class="btn btn-outline-primary w-100 actual" id="btn-createE" data-toggle="tab" href="#nav-createE" role="tab" aria-controls="nav-r" aria-selected="true">
+                            <i class="fas fa-plus-square mx-auto"></i> <h:outputText value=" #{textSupp.crear}"/>
+                        </a> 
+                    </li>
+
+                    <h:outputLabel/>
+
+                    <!-- Boton de consultar evento -->
+                    <li class="nav-item col-6" title="Consultar categoria deportiva">
+                        <a class="btn btn-outline-primary w-100 actual" id="btn-consultE" data-toggle="tab" href="#nav-consultarE" role="tab" aria-controls="nav-r" aria-selected="true">
+                            <i class="fas fa-book mx-auto"></i> <h:outputText value=" #{textSupp.consultar}"/>
+                        </a> 
+                    </li>
+
+                    <h:outputLabel class="col-12"/>
+
+                    <!-- Boton de modificar evento -->
+                    <li class="nav-item col-6" title="Modificar categoria deportiva">
+                        <a class="btn btn-outline-success w-100 actual" id="btn-editE" data-toggle="tab" href="#nav-editE" role="tab" aria-controls="nav-r" aria-selected="true">
+                            <i class="fas fa-edit mx-auto"></i> <h:outputText value=" #{textSupp.modificar}"/>
+                        </a> 
+                    </li> 
+
+                    <h:outputLabel/>
+
+                    <!-- Boton de eliminar evento -->
+                    <li class="nav-item col-6" title="Eliminar categoria deportiva">
+                        <a class="btn btn-outline-danger w-100 actual" id="btn-eliminarE" data-toggle="tab" href="#nav-eliminarE" role="tab" aria-controls="nav-r" aria-selected="true">
+                            <i class="fas fa-trash-alt"></i> <h:outputText value=" #{textSupp.eliminar}"/>
+                        </a> 
+                    </li>
+                </ul>	
+            </div>
+
+            <!-- Opciones despreglabes de evento -->
+            <div class="tab-content col-md-4 tamaño-barra-admi float-left" id="nav-tabred">
+                <!-- Espacio de Crear evento -->
+                <div class="tab-pane fade show bg-primary w-100 h-100 text-white pb-1" id="nav-createE" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <h6 class="col-12 text-center pt-2 pb-2">
+                        Para crear un evento se debe llenar todas las casillas del formulario.
+                    </h6>
+                    <h4 class="fas fa-arrow-down col-12 text-center"></h4>
+                    <h:form class="col-12 text-center pb-4">
+                        <h:commandLink action="html/usuarios/formularios/crear_usuario.html" class="btn btn-light" target="controlador" value="#{textSupp.realizarFormulario}"/>
+                    </h:form>
+                </div>
+
+                <!-- Espacio de consultar una evento -->
+                <div class="tab-pane fade show bg-primary w-100 h-100 text-white pb-1" id="nav-consultarE" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <h6 class="col-12 text-center pt-2 pb-2">
+                        Se mostrara una tabla con los eventos que se han hecho en la academia.
+                    </h6>
+                    <h4 class="fas fa-arrow-down col-12 text-center"></h4>
+                    <h:form class="col-12 text-center pb-4">
+                        <h:commandLink action="html/usuarios/formularios/crear_usuario.html" class="btn btn-light" target="controlador" value="#{textSupp.realizarFormulario}"/>
+                    </h:form>
+                </div>
+
+                <!-- Espacio de modificar una evento -->
+                <div class="tab-pane fade show bg-success w-100 h-100 text-white pb-1" id="nav-editE" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <h6 class="col-12 text-center pt-2 pb-2">
+                        Se podra midificar los datos de los eventos.
+                    </h6>
+                    <h4 class="fas fa-arrow-down col-12 text-center"></h4>
+                    <h:form class="col-12 text-center pb-4">
+                        <h:commandLink action="html/usuarios/formularios/crear_usuario.html" class="btn btn-light" target="controlador" value="#{textSupp.realizarFormulario}"/>
+                    </h:form>
+                </div>
+
+                <!-- Espacio de eliminar una evento -->
+                <div class="tab-pane fade show bg-danger w-100 h-100 text-white pb-1" id="nav-eliminarE" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <h6 class="col-12 text-center pt-2 pb-2">
+                        Se mostrara una lista donde se podra eliminar los eventos.
+                    </h6>
+                    <h4 class="fas fa-arrow-down col-12 text-center"></h4>
+                    <h:form class="col-12 text-center pb-4">
+                        <h:commandLink action="html/usuarios/formularios/crear_usuario.html" class="btn btn-light" target="controlador" value="#{textSupp.realizarFormulario}"/>
+                    </h:form>
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>

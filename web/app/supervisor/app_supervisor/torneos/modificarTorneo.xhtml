@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+       >
+
+    <h:head>
+        <title>Crear categoria deportiva</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <ui:include src="../../../../WEB-INF/supervisor/link_estilos.xhtml"/>
+    </h:head>
+
+    <f:view locale="es">
+
+        <h:body>
+
+            <!-- Encabezado -->
+            <div></div>
+
+            <!-- NAVEGADOR -->
+            <ui:include src="../../../../WEB-INF/supervisor/nav/nav_sup_sec.xhtml"/>
+
+            <!-- Formulario de creacion de categoria deportiva -->
+            <div class="container w-75 mt-5">
+
+                <div class="row">
+                    <h1 class="col-12 pl-4 mx-auto">
+                        Formulario para modificar torneos
+                    </h1>
+                </div>
+
+                <h:form class="p-3">
+                    <h:inputHidden value="#{torneoController.torneo.idTorneo}"/>
+                    
+                    <div class="form-group">
+                        <h:outputLabel value="#{textSupp.nombreTo}" for="nombreT"/>
+                        <h:inputText class="form-control" id="nombreT" value="#{torneoController.torneo.nombreTorneo}" 
+                                     required="true" a:pattern="[A-Za-z - ]{1,100}"/>
+
+                        <h:message for="nombreT"/>
+                    </div>
+
+                    <div class="form-group">
+                        <h:outputLabel value="#{textSupp.fechaInTo}" for="fechaIT"/>
+                        <h:inputText a:type="date" class="form-control" value="#{torneoController.torneo.fechaInicio}" 
+                                     id="fechaIT" required="true" a:pattern="{10}">
+                            <f:convertDateTime pattern="yyyy-mm-dd"/>
+                        </h:inputText>
+                        <h:message for="fechaIT"/>
+                    </div>
+
+                    <div class="form-group">
+                        <h:outputLabel value="#{textSupp.fechaFinTo}" for="fechaFT"/>
+                        <h:inputText a:type="date" class="form-control" value="#{torneoController.torneo.fechaFinal}" 
+                                     id="fechaFT" required="true" a:pattern="{10}">
+                            <f:convertDateTime pattern="yyyy-mm-dd"/>
+                        </h:inputText>
+                        <h:message for="fechaFT"/>
+                    </div>
+
+
+                    <div class="form-group">
+                        <h:outputLabel value="#{textSupp.decripcionTo}" for="decripcionTo"/>
+                        <h:inputText class="form-control p-0" value="#{torneoController.torneo.descripcionTorneo}" 
+                                     id="decripcionTo" required="true" a:pattern="[A-Za-z - ]{1,100}"/>
+                        <h:message for="decripcionTo"/>
+                    </div>
+
+                    <div class="form-group">
+                        <h:outputLabel value="#{textSupp.lugarTor}" for="lugarT"/>
+                        <h:selectOneMenu value="#{torneoController.lugarTorneo.idLugarTorneo}">
+                            <f:selectItems 
+                                var="lugarTorneo"
+                                value="#{torneoController.listaLugarTorneo}"
+                                itemLabel="#{lugarTorneo.nombreLugarTorneo}"
+                                itemValue="#{lugarTorneo.idLugarTorneo}"
+                                />
+                        </h:selectOneMenu>
+                        <h:message for="lugarT"/>
+                    </div>
+
+                    <div class="row">
+                        <h:commandButton value="modificar" class="btn btn-info col-3 mx-auto"
+                                         action="#{torneoController.modificarTorneo()}"
+                                         />
+                    </div>
+                </h:form>
+                <h:messages globalOnly="true" showDetail="true"/>
+            </div>
+
+
+        </h:body>
+
+    </f:view>
+</html>

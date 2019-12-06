@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>Academia Deportiva Bocaneiros - Deportista</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+        <ui:include src="../../WEB-INF/supervisor/link_estilos_norm.xhtml"/>
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"/>
+
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="../../resources/datatable/js/activartabla.js" type="text/javascript"></script>
+
+
+        <!-- Estilos propios -->
+        <link href="...../resources/css/estilos.css" rel="stylesheet" type="text/css"/>
+
+        <f:event type="preRenderView" listener="#{loginController.verificarSession()}"/>
+
+        <f:event type="preRenderView" listener="#{usuariosController.informacionAlumno()}"/>
+
+    </h:head>
+
+    <f:view locale="es">
+
+        <h:body>		
+
+            <!-- Contenedor de toda la informacion y interaccion -->
+            <div class="container w-100 pr-3 pl-3 pb-3 bg-white">
+
+                <!-- Encabezado -->
+                <header class="row p-1">
+
+                    <!-- Nombre de la academia deportiva -->
+                    <div class="col-12 pl-4 justify-content-center">
+                        <!-- Logo de la academia -->
+                        <div class="h-100 justify-content-center">
+                            <div class="h-100 logo">
+                            </div>	
+                            <h2 class="col-12 d-md-none">Bocaneiros</h2>
+                            <h2 class="col-12 d-none d-md-block">Academia Deportiva Bocaneiros</h2>
+                        </div>
+                    </div>
+
+                </header>
+
+                <!-- Navegacion	 -->
+                <ui:include src="../../WEB-INF/profesor/navProfesor.xhtml"/>
+
+                <!-- Informaion del deportista -->
+                <div class="row">
+
+                    <h1 class="col-12 text-success text-center">
+                        #{textSupp.mi} #{textSupp.perfil}
+                    </h1>
+
+                    <h:form class="container col-12" enctype="multipart/form-data">
+
+                        <h:inputHidden id="doc" value="#{usuariosController.usuarios.documento}"/>
+                        <h:message for="doc" showDetail="true"/>
+                        <h:inputHidden id="alum" value="#{usuariosController.alumno.idAlumno}"/>
+                        <h:message for="alum" showDetail="true"/>
+
+                        <div class="w-100 mx-auto">
+
+                            <div class="row">
+
+                                <!-- Informacion del estudiante -->
+                                <div class="card-header col-12 text-center mt-0 p-1">
+
+                                    <h:outputLabel value="#{textSupp.modificar} #{textSupp.Info}" class=" col-12 text-primary"/>
+
+                                </div>
+
+                                <div class="col-12 bg-success text-white">
+                                    <h:messages class="text-white" globalOnly="true" showDetail="true"/>
+                                </div>
+
+
+                                <!--  Contenedor del formulario de incripcion  -->
+                                <div class="col-10 text-ligh mx-auto">
+
+                                    <div class="mb-3 row">
+                                        <h:outputLabel for="image" class="col-12 text-center" value="#{textSupp.fotoPerfil}"/>
+                                        <div class="col-12 col-md-8 col-lg-6 col-xl-4 mx-auto">
+                                            <h:graphicImage value="#{usuariosController.usuarios.fotoPerfil}" class="col-12 images-circular mb-1"/>
+                                        </div>
+                                        <div class="col-12 mx-auto text-center">
+                                            <h:inputFile a:accept=".jpg" value="#{usuariosController.archivo.file}" 
+                                                         id="image" label="#{textSupp.buscarImage}" required="true"/>
+                                        </div>
+                                        <h:messages for="image" showDetail="true"/>
+                                    </div>
+
+                                    <div class="mb-3 mx-auto text-center">
+                                        <h:outputLabel for="doc" value="#{textSupp.documentoI}: "/>
+                                        <div class="">
+                                            <h:selectOneMenu class=""
+                                                             value="#{usuariosController.tipoDoc.idTipoDoc}">
+                                                <f:selectItems 
+                                                    value="#{usuariosController.listaTipoDoc}"
+                                                    var="tipoDoc"
+                                                    itemValue="#{tipoDoc.idTipoDoc}"
+                                                    itemLabel="#{tipoDoc.topoDoc}"
+                                                    />
+                                            </h:selectOneMenu>
+                                        </div>
+                                        <h:messages for="doc" showDetail="true"/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <h:outputLabel for="nombreU" value="#{textSupp.nombre}: "/>
+                                        <h:inputText class="form-control" 
+                                                     value="#{usuariosController.usuarios.nombre1}" 
+                                                     id="nombreU" required="true"/>
+                                        <h:messages for="nombreU" showDetail="true"/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <h:outputLabel for="nombreU2" value="#{textSupp.nombre} 2: "/>
+                                        <h:inputText class="form-control" 
+                                                     value="#{usuariosController.usuarios.nombre2}" 
+                                                     id="nombreU2" required="true"/>
+                                        <h:messages for="nombreU2" showDetail="true"/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <h:outputLabel for="apellidoU" value="#{textSupp.apellidoUsu}: "/>
+                                        <h:inputText class="form-control" 
+                                                     value="#{usuariosController.usuarios.apellido1}" 
+                                                     id="apellidoU" required="true"/>
+                                        <h:messages for="apellidoU" showDetail="true"/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <h:outputLabel for="apellidoU2" value="#{textSupp.apellidoUsu} 2: "/>
+                                        <h:inputText class="form-control" 
+                                                     value="#{usuariosController.usuarios.apellido2}" 
+                                                     id="apellidoU2" required="true"/>
+                                        <h:messages for="apellidoU2" showDetail="true"/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <h:inputHidden
+                                            value="#{usuariosController.usuarios.fechaNacimiento}" 
+                                            class="form-control" id="fechaN">
+                                            <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                        </h:inputHidden>
+                                        <h:messages for="fechaN" showDetail="true"/>
+                                    </div>
+
+
+                                    <div class="custom-file mb-2 mt-2">
+
+                                        <h:outputLabel for="eps" value="#{textSupp.eps}: " class="mr-2"/>
+
+                                        <h:selectOneMenu value="#{usuariosController.eps.idEps}" id="eps">
+                                            <f:selectItems
+                                                var="listaE"
+                                                value="#{usuariosController.epsL}"
+                                                itemValue="#{listaE.idEps}"
+                                                itemLabel="#{listaE.nombreEps}"
+                                                />
+                                        </h:selectOneMenu>
+
+                                        <h:messages for="eps" showDetail="true"/>
+                                    </div>
+
+
+                                    <div class="mb-2 mt-2">
+                                        <h:inputHidden class="ml-2 is-invalid" 
+                                                       value="#{usuariosController.tipoSangre.idtipoSangre}"/>
+
+                                    </div>
+
+                                    <!-- Llenar la tbla de alumno -->
+                                    <div class="mb-3">
+                                        <label for="enfermedad">¿Padese de alguna enfemedad?</label>
+                                        <h:inputTextarea class="form-control" id="enfermedad"
+                                                         value="#{usuariosController.alumno.descripcion}"
+                                                         />
+                                    </div>
+
+                                    <!-- Beca -->
+                                    <div class="mb-3">
+                                        <h:inputHidden
+                                            value="#{usuariosController.alumno.beca}" 
+                                            class="form-control" id="beca"/>
+
+                                        <h:messages for="beca" showDetail="true"/>
+                                    </div>
+
+
+
+                                    <h:inputHidden value="#{usuariosController.usuarios.documento}"/>
+                                    <h:inputHidden value="#{usuariosController.alumno.idAlumno}"/>
+
+                                    <div class="mb-4 mt-4 text-center">
+                                        <h:commandButton value="#{textSupp.modificar}"
+                                                         class="btn btn-success"
+                                                         actionListener="#{usuariosController.actualizarProfesorPerfil()}"
+                                                         />
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </h:form>
+
+
+                </div>
+
+
+                <!-- *******************Fin de las fichas********************** -->
+
+
+                <!-- **************** Pîe de pagina **************** -->
+                <footer>
+
+                </footer>
+
+            </div>	
+            <!-- Fin del contenedor de toda la informacion -->
+
+
+
+            <!-- **************** Fin de todos los formularios *************** -->
+
+            <!-- ***************************** JavaScript ********************************** -->
+            <!-- ********************************************************************* -->
+
+        </h:body>
+
+    </f:view>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+
+    <head>
+        <title>Navegacion</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <h:body>
+
+        <h:form class="row  sticky-top">
+            <!-- Boton de moviles -->
+
+            <nav class="col-12 ">
+                <div class="nav bg-fondo nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">#{textSupp.inicio}</a>
+
+                    <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-usuario" role="tab" aria-controls="nav-home" aria-selected="true">#{textSupp.usuarios}</a>
+
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-categoria-deportiva" role="tab" aria-controls="nav-profile" aria-selected="false">#{textSupp.categoriaDeportiva}</a>
+
+                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-torneo" role="tab" aria-controls="nav-contact" aria-selected="false">#{textSupp.torneos}</a>
+
+                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-horario" role="tab" aria-controls="nav-contact" aria-selected="false">#{textSupp.horario}</a>
+
+                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-evento" role="tab" aria-controls="nav-contact" aria-selected="false">#{textSupp.eventos}</a>
+
+                    <a class="btn btn-outline-dark ml-1 p-1 h-50" title="ocultar" id="nav-contact-tab" data-toggle="tab" href="#nav-ocultar" role="tab" aria-controls="nav-contact" aria-selected="false">
+                        <i class="fas fa-eye-slash"></i>
+                    </a>
+
+                </div>
+            </nav>
+        </h:form>
+
+    </h:body>
+
+</html>

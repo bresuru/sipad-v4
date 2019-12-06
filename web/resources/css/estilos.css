@@ -1,0 +1,198 @@
+*{
+    margin: 0px;
+    padding: 0px;
+
+    box-sizing: border-box;
+}
+
+/* Cuerpo */
+body{
+    background: white;
+}
+
+/*imagen de fomdo de inscripciones*/
+.imgInscripcion{
+  background-image: url(../images/fondo-futbol.jpg);
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+
+/* color de fondo de la fichas */
+.bg-ficha{
+    background: rgb(229,234,234);
+}
+
+/* Fondo de incripcion */
+.fondo-inscripcion{
+    background-image: url("../si/img/fondo-inscripcion.jpg");
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+
+/* Flotantes */
+.float-left{
+    float: left;
+}
+
+/* Display */ 
+.display-no{
+    display: none;
+}
+
+/* Bordes */
+.bordBottom{
+    border-bottom: 1px solid black;
+    color: rgba(255,255,255,0.97);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de todo el contenido*/
+.cont{
+    height: auto;
+
+}
+
+/* Encabezado de la pagina */
+header{
+    background: rgb(15,121,111);
+    height: 80px;
+}
+h2{
+    color: white;	
+    padding-top: 6px;
+}
+.logo{
+    background-image: url("../../resources/images/LogoAD.png");
+    background-size: 100% 100%;
+    float: left;
+    width: 10%;
+}
+
+
+/* Navegacion */
+nav{	
+    position: fixed;
+}
+nav ul li a{
+    color: rgba(15,121,111,0.9);
+}
+nav ul li a:hover{ 	
+    color: rgb(12, 183, 242);
+    transition: 0.5s;
+}
+nav .actual{
+    color: rgb(12, 183, 242);
+}
+
+/* Imagen de eventos de la acedemia */
+.imgP{
+    background: url("../img/princilpal.jpg");
+}
+.mb-200{
+    margin-bottom: 260px;
+    display: b
+}
+
+/* aLineacon a la derecha */
+.aliD{
+    text-align: right;
+    right: 0px;
+    border: 1px solid black;
+}
+
+/* Espacio para las fichas */
+.espF{
+    margin-top: 25px;
+}
+
+/* Boton para subir */
+.Up{
+    display: block;
+    padding: 10px;
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
+    color: white;
+    border-radius: 45%;
+}
+
+/* Ficha de categoraia deportiva */
+.fichaDe{
+    background: white;
+}
+
+/* Imagen de torneos */
+.imgT{
+    background: 100% 100%;
+}
+
+
+/*Correcto en un imput*/
+input:valid{
+    border: 1px solid green;
+}
+/*Incorrecto en un input*/
+input:invalid{
+    border: 1px solid red;
+}
+
+img{
+    background-size: 100% 100%;
+}
+
+/* Redondear */
+.br-10{
+    border-radius: 10px;
+}
+
+/* Letra grande */
+.letra-grande{
+    font: 8em arial;
+}
+.letra-mediana{
+    font: 4em arial;
+}
+
+/* Para ocultar barra de navegacion */
+.nav-ocultar:hover .ocultar{
+    display: none;
+}
+
+/* Tamaño del iframe del supervisor */
+.iframe-supervisor{
+    display: none;
+    height: 600px;
+    background-size: 100% 100%;
+}
+
+/* Imagen de error */
+.img_error_404{
+    background-attachment: fixed;
+    background-image: url("../img/error404.png");
+    background-size: 100% 100%;
+}
+.img_error_500{
+    background-attachment: fixed;
+    background-image: url("../img/error500.png");
+    background-size: 100% 100%;
+}
+
+/* Cointenedor */
+.container{
+    max-width: 1920px;
+    margin: auto;
+}
+
+/* Fondos de perfiles */
+/*.fondo-prefil1{
+        background: url("../si/img/fondoPerfiles.png");
+        background-size: 100% 100%;
+        background-attachment: fixed;
+}*/
+/*.tras{
+        background: rgba(0,0,0,0.1); 
+}
+*/

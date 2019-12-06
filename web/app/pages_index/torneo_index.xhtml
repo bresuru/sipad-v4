@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>Torneos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <ui:include src="../../WEB-INF/supervisor/link_estilos.xhtml"/>
+
+    </h:head>
+
+    <h:body class="bg-white">
+
+        <!-- Contenedor de toda la informacion y interaccion -->
+        <div class="container bg-white w-100 pr-3 pl-3 ">
+
+            <!-- Encavezado -->
+            <header class="row p-1">
+
+                <!-- Nombre de la academia deportiva -->
+                <div class="col-12 pl-4 justify-content-center">
+                    <!-- Logo de la academia -->
+                    <div class="h-100 justify-content-center">
+                        <div class="h-100 logo">
+                        </div>	
+                        <h2 class="col-12 pt-3 text-center d-md-none">Bocaneiros</h2>
+                        <h2 class="col-12 pt-3 d-none d-md-block text-center">Academia Deportiva Bocaneiros</h2>
+                    </div>
+                </div>
+
+            </header>
+
+            <!-- Navegacion	 -->
+            <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light row">
+
+                <!-- Boton de moviles -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navegador" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+                <!-- Botones de pantalla grande -->
+                <div class="collapse navbar-collapse" id="navegador">
+
+                    <!-- Botones de paginas -->
+                    <ul class="nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link " href="../../index.xhtml"><i class="fas fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link actual" href="torneo_index.xhtml"><i class="fas fa-trophy"></i> Torneos</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="categoriaDeportiva_index.xhtml"><i class="fas fa-futbol"></i> Categoria deportiva </a>
+                        </li> 
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="inscripcion_index.xhtml">
+                                <i class="fas fa-file-signature"></i> Inscripciónes
+                            </a>    
+                        </li>
+
+
+
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-key"></i> #{textSupp.ingresar}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" data-toggle="modal" href="#iniciar">
+                                    #{textSupp.iniciarS}
+                                </a>
+
+                                <a class="dropdown-item" href="inscripcion_index.xhtml">
+                                    #{indexTextEdit.registrarse}
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+
+                </div>
+
+            </nav>
+            <!-- Fin de la barra de navegacion y encabezado -->
+
+            <div class="row">
+                <h:messages globalOnly="true" showDetail="true" 
+                            class="nav-link bg-success text-white col-12 mb-0" />
+            </div>
+
+            <!-- Titulo de la pagina -->
+            <div class="bd-example row">
+                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../../resources/images/torneos.jpg" class="d-block w-100 img-fixed" alt="..."/>
+                            <div class="carousel-caption d-none d-md-block w-100 h-75 justify-content-end pl-5">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Fichas con los torneos actuales -->
+
+            <!-- Ficha de torneo 1 -->
+            <div class="card mb-3 bg-light mt-3">
+                <div class="row no-gutters bg-ficha text-dark">
+                    <!-- imagen de la categoria deportiva -->
+                    <div class="col-md-4 ">
+                        <img src="../../resources/images/FUTBOLN.jpg" class="card-img" alt="..."/>
+                    </div>
+                    <!-- Informacion de la categoria deportiva -->
+                    <div class="col-md-7 pb-3">
+                        <div class="card-body">
+                            <h3 class="card-title">Liga Pony</h3>
+                            <p class="card-text"> Deja que tus pequeñas estrellas brillen.</p>
+
+                            <div class="row">
+                                <p class="col-6">
+                                    Fecha de inicio: 22/02/2019.
+                                </p>
+                                <p class="col-6">
+                                    Fecha en la que se termina el torneo: 24/06/2019.
+                                </p>
+                            </div>
+
+                            <div class="row">
+                                <p class="col-6">
+                                    Numero deporticipantes: 18.
+                                </p>
+                                <p class="col-6">
+                                    Nombre del equipo que participa: Pony Club.
+                                </p>
+                            </div>
+
+                            <div class="row">
+                                <p class="col-6">
+                                    Organizador del torneo: Movistar.
+                                </p>
+                                <p class="col-6">
+                                    Telefono de contacto: 283231231.
+                                </p>
+                            </div>
+
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ficha de torneo 2 -->
+            <div class="card mb-3 bg-light">
+                <div class="row no-gutters bg-ficha text-dark">
+                    <!-- imagen de la categoria deportiva -->
+                    <div class="col-md-4 ">
+                        <img src="../../resources/images/FUTBOL.jpg" class="card-img" alt="..."/>
+                    </div>
+                    <!-- Informacion de la categoria deportiva -->
+                    <div class="col-md-7 pb-3">
+                        <div class="card-body">
+                            <h3 class="card-title">Torneo Pre-Juvenil</h3>
+                            <p class="card-text"> Ven y obserba l mejor equipo de Pre-Juvenil de la zona. </p>
+
+                            <div class="row">
+                                <p class="col-6">
+                                    Fecha de inicio: 24/04/2019.
+                                </p>
+                                <p class="col-6">
+                                    Fecha en la que se termina el torneo: 21/09/2019.
+                                </p>
+                            </div>
+
+                            <div class="row">
+                                <p class="col-6">
+                                    Numero deporticipantes: 16.
+                                </p>
+                                <p class="col-6">
+                                    Nombre del equipo que participa: Wof Black.
+                                </p>
+                            </div>
+
+                            <div class="row">
+                                <p class="col-6">
+                                    Organizador del torneo: Movistar.
+                                </p>
+                                <p class="col-6">
+                                    Telefono de contacto: 283231231.
+                                </p>
+                            </div>
+                            <p class="card-text"><small class="text-muted">Last updated 10 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <ui:include src="/WEB-INF/indexEst/footer.xhtml"/>
+
+        </div>
+        <!-- ************************* Fin contenedor ****************** -->
+
+        <!-- ************** Formulario ************* -->
+        <!-- formulario de iniciar sesion -->
+        <div class="modal fade" id="iniciar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="row">
+                            <h4 class="modal-title col-12 text-center" id="exampleModalLabel">
+                                #{textSupp.iniciarS}
+                            </h4>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                    </div>
+
+                    <h:form class="modal-body">
+
+                        <div class="p-1 pl-3 pr-3" action="POST">
+                            <div class="form-group row">
+                                <h:outputLabel value="#{textSupp.documentoI}" for="doc"/>                                                
+
+                                <h:inputText class="form-control" id="usuario" 
+                                             value="#{loginController.login.usuario}"  required="true"/>
+                                <h:message for="usuario"/>
+                            </div>
+                            <div class="form-group row">
+                                <h:outputLabel value="#{textSupp.aceptar}" for="pass"/>
+                                <h:inputText a:type="password" class="form-control" id="pass" 
+                                             value="#{loginController.login.contrasena}"/>
+                                <h:message for="pass"/>
+                            </div>
+
+                            <div class="col-12 text-center">
+                                <h:commandButton class="btn btn-primary col-3" value="#{textSupp.iniciarS}"
+                                                 action="#{loginController.iniciarSesion()}"
+                                                 />
+                            </div>	
+                        </div>
+                        <div class="form-group row">
+                            <ul class="nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link actual" data-toggle="modal" href="#recuperar">
+                                        #{textSupp.olvidePass}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </h:form>
+
+                </div>
+            </div>
+        </div>
+        <!-- Fin formulario de ingreso  -->
+
+        <!-- Formulario de recuperacion de contraseña -->
+        <div class="modal fade" id="recuperar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="row">
+                            <h4 class="modal-title col-12 text-center" id="exampleModalLabel">Cambio de contraseña</h4>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <h:form class="modal-body">
+
+                        <div class="p-1 pl-3 pr-3" action="POST">
+                            <div class="form-group row">
+                                <div class="mb-3 col-12">
+                                    <h:outputLabel for="correo"  value="#{textSupp.correo}"/>
+                                    <h:inputText a:type="mail" class="form-control" id="correo" value="#{mailController.correo.para}" required="true"/>
+                                    <h:message for="correo"/>
+                                </div>
+                                <div class="mb-3 col-12">
+                                    <h:outputLabel for="doc" value="#{textSupp.documentoI}"/>
+                                    <h:inputText id="doc" class="form-control" required="true" value="#{mailController.usuario.documento}"/>
+                                    <h:message for="correo"/>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <h:commandButton class="btn btn-primary col-3" value="#{textSupp.Enviar}"
+                                                 actionListener="#{mailController.recupararContraseña()}"/>
+                            </div>	
+                        </div>
+
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ************************* JavaScript ************************* -->
+        <!-- **************************************************************** -->
+    </h:body>
+</html>

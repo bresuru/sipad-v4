@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      >
+    <h:head>
+        <title>Inscripcion</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <ui:include src="../../WEB-INF/indexEst/link_estilos.xhtml"/>
+    </h:head>
+
+    <f:view locale="es">
+
+        <h:body class="imgInscripcion w-100">
+
+
+            <div class="container w-100">
+
+                <div class="row">
+                    <div class="container h-100 bg-white mt-3 mb-4 col-lg-8 col-md-10 col-12">
+
+
+                        <nav class="navbar navbar-expand-lg sticky-top bg-success row pl-4">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <a class="btn btn-outline-light" href="../pages_index/inscripcion_index.xhtml">
+                                        Volver
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+
+
+                        <div class="row">
+                            <h1 class="col-12 pl-4 mt-2 mb-1 text-success">
+                                #{textSupp.FormularioFu}
+                            </h1>
+                        </div>
+
+                        <h:form class="container w-100 mb-4">
+
+                            <div class="col-12 mx-auto pl-1 pr-1">
+
+                                <div class="row">
+
+
+                                    <div class=" col-12 bg-primary p-0  text-center text-ligh">
+                                        <h:messages globalOnly="true" showDetail="true" 
+                                                    styleClass="text-white pt-2"/>
+                                    </div>
+
+
+                                    <!--  Contenedor del formulario de incripcion  -->
+                                    <div class="col-12 col-md-11 col-lg-12 mt-4 text-ligh mx-auto">
+
+                                        <div class="mb-3">
+                                            <h:outputLabel for="doc" value="#{textSupp.documentoI}: "/>
+                                            <div class="row">
+                                                <h:inputText class="form-control col-md-6 mx-auto" 
+                                                             value="#{inscripcionController.usuarios.documento}" 
+                                                             id="doc" required="true" a:pattern="[0-9]{6,9}"/>
+                                                <h:selectOneMenu class="col-md-5"
+                                                                 value="#{inscripcionController.tipoDoc.idTipoDoc}">
+                                                    <f:selectItems 
+                                                        value="#{inscripcionController.listaTipoDoc}"
+                                                        var="tipoDoc"
+                                                        itemValue="#{tipoDoc.idTipoDoc}"
+                                                        itemLabel="#{tipoDoc.topoDoc}"
+                                                        />
+                                                </h:selectOneMenu>
+                                            </div>
+                                            <h:messages for="doc" showDetail="true"/>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <h:outputLabel for="nombreU" value="#{textSupp.nombre}: "/>
+                                            <h:inputText class="form-control" 
+                                                         value="#{inscripcionController.usuarios.nombre1}" 
+                                                         id="nombreU" required="true" a:pattern="[A-Za-z]{3,25}"/>
+                                            <h:messages for="nombreU" showDetail="true"/>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <h:outputLabel for="nombreU2" value="#{textSupp.nombre} 2: "/>
+                                            <h:inputText class="form-control" 
+                                                         value="#{inscripcionController.usuarios.nombre2}" 
+                                                         id="nombreU2" a:pattern="[A-Za-z]{3,25}"/>
+                                            <h:messages for="nombreU2" showDetail="true"/>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <h:outputLabel for="apellidoU" value="#{textSupp.apellidoUsu}: "/>
+                                            <h:inputText class="form-control" 
+                                                         value="#{inscripcionController.usuarios.apellido1}" 
+                                                         id="apellidoU" a:pattern="[A-Za-z]{3,25}" required="true"/>
+                                            <h:messages for="apellidoU" showDetail="true"/>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <h:outputLabel for="apellidoU2" value="#{textSupp.apellidoUsu} 2: "/>
+                                            <h:inputText class="form-control" 
+                                                         value="#{inscripcionController.usuarios.apellido2}" 
+                                                         id="apellidoU2"  a:pattern="[A-Za-z]{3,25}"/>
+                                            <h:messages for="apellidoU2" showDetail="true"/>
+                                        </div>
+
+
+                                        <div class="mb-3">
+                                            <h:outputLabel for="fechaN" value="#{textSupp.fechaNacimiento}: "/>
+                                            <h:inputText 
+                                                value="#{inscripcionController.usuarios.fechaNacimiento}" 
+                                                a:type="date" class="form-control" id="fechaN" required="true">
+                                                <f:convertDateTime pattern="yyyy-mm-dd"/>
+                                            </h:inputText>
+                                            <h:messages for="fechaN" showDetail="true"/>
+                                        </div>
+
+
+
+                                        <div class="custom-file mb-2 mt-2">
+                                            <h:outputLabel for="eps" value="#{textSupp.eps}: "/>
+                                            <h:selectOneMenu class="ml-1" 
+                                                             value="#{inscripcionController.eps.idEps}">
+                                                <f:selectItems
+                                                    var="listaE"
+                                                    value="#{inscripcionController.epsL}"
+                                                    itemLabel="#{listaE.nombreEps}"
+                                                    itemValue="#{listaE.idEps}"
+                                                    />
+                                            </h:selectOneMenu>
+                                            <h:messages for="eps" showDetail="true"/>
+                                        </div>
+
+                                        <div class="mb-2 mt-2">
+                                            <h:outputLabel value="#{textSupp.tipoSangre}: " />
+                                            <h:selectOneMenu class="ml-2 is-invalid" 
+                                                             value="#{inscripcionController.tipoSangre.idtipoSangre}">
+                                                <f:selectItems 
+                                                    var="listaRh"
+                                                    value="#{inscripcionController.listaTipoSangre}"
+                                                    itemLabel="#{listaRh.rh}"
+                                                    itemValue="#{listaRh.idtipoSangre}"
+                                                    />
+                                            </h:selectOneMenu>
+                                        </div>
+
+                                        <!-- Llenar la tbla de alumno -->
+                                        <div class="mb-3">
+                                            <label for="enfermedad">#{textSupp.descripCD}</label>
+                                            <h:inputTextarea class="form-control" id="enfermedad"
+                                                             value="#{inscripcionController.alumno.descripcion}"
+                                                             />
+                                        </div>
+
+                                        <!-- Usuario y contraseña -->
+                                        <div class="mb-3">
+                                            <h:outputLabel for="pass" value="#{textSupp.Contrasena}: "/>
+                                            <h:inputText a:pattern="[A-Za-z0-9]{6,20}"
+                                                         value="#{inscripcionController.login.contrasena}" 
+                                                         class="form-control" a:type="password" id="pass"/>
+
+                                            <h:messages for="pass" showDetail="true"/>
+                                        </div>
+
+                                        <div class="mb-3 text-center">
+                                            <h:commandButton value="#{textSupp.RegistarA}"
+                                                             class="btn btn-success"
+                                                             action="#{inscripcionController.registrarAlumF()}"
+                                                             />
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </h:form>
+
+
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <ui:include src="/WEB-INF/indexEst/footer.xhtml"/>
+
+            </div>
+
+        </h:body>
+
+    </f:view>
+
+</html>

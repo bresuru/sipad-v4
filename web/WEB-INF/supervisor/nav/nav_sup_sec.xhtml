@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"    
+
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <head>
+        <title>Conusultar usuarios</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <f:view locale="es">
+
+        <h:body>
+            
+            <div class="modal fade row">
+                <ui:include src="../../indexEst/footer.xhtml"/>
+            </div>
+
+            <h:form class="text-right bg-dark mb-4 p-2 text-light sticky-top p-0 ">
+
+                <a href="../../indexSup.xhtml" class="p-2 mr-3 text-white text-center ">#{textSupp.inicio}</a>
+
+
+                <!-- Boton de idoma -->
+
+                <button type="button" class="btn p-0 dropdown-toggle  text-white"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-globe"></i>
+                </button>
+
+                <div class="dropdown-menu p-0" aria-labelledby="dropdownMenuButton">
+
+                    <c:forEach items="#{lenguajeController.listaIdioma}" var="idioma">
+
+                        <h:commandLink
+                            class="dropdown-item" actionListener="#{lenguajeController.cambiarIdioma(idioma)}"
+                            value="#{idioma.language}"
+                            />
+
+                    </c:forEach>
+
+                </div>
+
+                <h:commandLink value="#{textSupp.cerrarSession}" class="text-light pl-4"
+                               action="#{loginController.cerrarSession()}"/>
+            </h:form>
+
+            <!-- Barra de navegacion -->
+            <div class="container">
+                <ul class="nav botones mt-5 mb-5">
+
+                    <!--Boton Usuarios -->
+                    <li class="nav-item dropdown mx-auto">
+                        <a class="btn btn-r  btn-info" data-toggle="dropdown" href="#" role="button">
+                            <img src="../../../../resources/images/images_sup/Usuarios.png" alt=""/>
+                        </a>
+                        <!-- Menu desplegable -->
+                        <h:form class="dropdown-menu">
+
+                            <!-- Seccion de crear usuarios -->
+                            <ul class="dropdown-item nav-ani disp">
+                                #{textSupp.crear}  
+                                <li class="dis">
+                                    <a class="disp dropdown-item nav-ani" 
+                                       href="../usuarios/alumnoRegistroP1.xhtml">
+                                        #{textSupp.estudiante}
+                                    </a>
+                                    <a class="disp dropdown-item nav-ani" 
+                                       href="../usuarios/registroProfesor.xhtml">
+                                        #{textSupp.profesor}
+                                    </a>
+                                    <a class="disp dropdown-item nav-ani" 
+                                       href="../usuarios/registroSupervisor.xhtml">
+                                        #{textSupp.supervisor}
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!-- Seccion de consultar usuarios -->
+                            <ul class="dropdown-item nav-ani disp">
+                                #{textSupp.consultar}  
+                                <li class="dis">
+                                    <!-- Boton de consultar alumnos -->
+                                    <a class="dropdown-item nav-ani disp" 
+                                       href="../usuarios/listarAlumnos.xhtml">
+                                        #{textSupp.estudiante}
+                                    </a>
+                                    <!-- Boton de consultar profesores -->
+                                    <a class="dropdown-item nav-ani disp" 
+                                       href="../usuarios/listarProfesores.xhtml">
+                                        #{textSupp.profesor}
+                                    </a>
+                                    <!-- Boton de consultar supervisores -->
+                                    <a class="dropdown-item nav-ani disp" 
+                                       href="../usuarios/listarSupervisores.xhtml">
+                                        #{textSupp.supervisor}
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!-- Seccion de consultar usuarios inactivos -->
+                            <ul class="dropdown-item nav-ani disp">
+                                #{textSupp.UsuarioI} 
+                                <li class="dis">
+                                    <!-- Boton de consultar alumnos -->
+                                    <a class="dropdown-item nav-ani disp" 
+                                       href="../usuarios/listarAlumnosInac.xhtml">
+                                        #{textSupp.estudiante}
+                                    </a>
+                                    <!-- Boton de consultar profesores -->
+                                    <a class="dropdown-item nav-ani disp" 
+                                       href="../usuarios/listarProfesoresInac.xhtml">
+                                        #{textSupp.profesor}
+                                    </a>
+                                    <!-- Boton de consultar supervisores -->
+                                    <a class="dropdown-item nav-ani disp" 
+                                       href="../usuarios/listarSupervisoresInac.xhtml">
+                                        #{textSupp.supervisor}
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </h:form>
+                    </li>
+
+                    <!--Boton Categorias deportivas  -->	
+                    <li class="nav-item dropdown mx-auto">
+                        <a class="btn btn-r btn-info" data-toggle="dropdown" href="#" role="button">
+                            <img src="../../../../resources/images/images_sup/Categorias.png" alt=""/>
+                        </a>
+
+                        <!-- Menu desplegable -->
+                        <h:form class="dropdown-menu">
+                            <a class="dropdown-item nav-ani" 
+                               href="../categoria_deportiva/crear_categoria_deportiva.xhtml"  
+                               >#{textSupp.crear}
+                            </a>
+                            <a class="dropdown-item nav-ani" href="../categoria_deportiva/consultar_categoria.xhtml">
+                                #{textSupp.consultar}
+                            </a>
+                        </h:form>
+                    </li>
+
+                    <!-- Boton Torneos -->	
+                    <li class="nav-item dropdown mx-auto">
+                        <a class="btn btn-r btn-info" data-toggle="dropdown" href="#" role="button">
+                            <img src="../../../../resources/images/images_sup/Torneos.png" alt=""/>
+                        </a>
+
+                        <!-- Menu desplegable -->
+                        <h:form class="dropdown-menu">
+                            <a class="dropdown-item nav-ani" 
+                               href="../torneos/crear_torneos.xhtml"  
+                               >#{textSupp.crear}</a>
+                            <a class="dropdown-item nav-ani" 
+                               href="../torneos/listarTorneos.xhtml"
+                               >#{textSupp.consultar}</a>
+
+                        </h:form>
+                    </li>	
+
+                    <!-- Boton Calendario -->
+                    <li class="nav-item dropdown mx-auto">
+                        <a class="btn btn-r btn-info" data-toggle="dropdown" href="#" role="button">
+                            <img src="../../../../resources/images/images_sup/Calendario.png" alt=""/>
+                        </a>
+
+                        <!-- Menu desplegable -->
+                        <h:form class="dropdown-menu">
+
+                            <a class="dropdown-item nav-ani" href="../eventos/listar_eventos.xhtml">
+                                #{textSupp.consultar}
+                            </a>
+                            <a class="dropdown-item nav-ani" href="../eventos/crear_eventos.xhtml">
+                                #{textSupp.crear}</a>
+
+                        </h:form>
+
+                    </li>
+
+                    <!-- Boton Reportes -->
+                    <li class="nav-item dropdown mx-auto">
+                        <a class="btn btn-r btn-info" data-toggle="dropdown" href="#" role="button">
+                            <img src="../../../../resources/images/images_sup/Reportes.png" alt=""/>
+                        </a>
+                        <!-- Menu desplegable -->
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item nav-ani" href="#">Generar reporte</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </h:body>
+
+    </f:view>
+</html>

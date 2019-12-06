@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    
+    <application>
+        
+        <locale-config>
+            
+            <default-locale>es</default-locale>
+            
+            <supported-locale>es</supported-locale>
+            <supported-locale>en</supported-locale>
+            
+        </locale-config>
+        
+        <resource-bundle>
+            
+            <base-name>sipad.languages.indexSupervisor</base-name>
+            
+            <var>textSupp</var>
+            
+        </resource-bundle>
+        
+        
+        <!--Cambio de lenguaje para el Profesor-->
+        
+        <resource-bundle>
+            
+            <base-name>sipad.languages.indexProfesor</base-name>
+            
+            <var>lenguajeEdit</var>
+            
+        </resource-bundle>
+        
+        <!--Cambio de lenguaje para el index principal de la pagina-->
+        
+        <resource-bundle>
+            <base-name>sipad.languages.indexPrincipal</base-name>
+            <var>indexTextEdit</var>
+        </resource-bundle>
+        
+    </application>
+
+</faces-config>
