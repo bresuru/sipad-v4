@@ -365,7 +365,6 @@ public class mailController implements Serializable {
         String main;
 
         String container;
-        String img;
         String imgUrl = "https://arrayanesfutbol.com/wp-content/uploads/2019/03/bocaneiros.png.png";
 
         try {
