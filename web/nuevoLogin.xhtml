@@ -80,21 +80,21 @@
                     <div class="form-group row">
                         <h:outputLabel value="#{textSupp.documentoI}" for="doc"/>                                                
                         <h:inputText class="form-control w-100" id="usuario" 
-                                     value="#{loginController.login.usuario}"  a:pattern="[0-9]{7,9}" required="true"/>
+                                     value="#{loginController.login.usuario}"  a:pattern="[0-9]{7,10}" required="true"/>
                         <h:message for="usuario"/>
                     </div>
 
                     <!-- Contraseña del usuario -->
                     <div class="form-group row">
                         <h:outputLabel value="#{textSupp.contasema}" for="pass"/>
-                        <h:inputText a:type="password" class="form-control" a:pattern="[A-Za-z0-9]{4,20}" id="pass" 
+                        <h:inputText a:type="password" class="form-control" a:pattern="[A-Za-z0-9]{4,30}" id="pass" 
                                      value="#{loginController.login.contrasena}"/>
                         <h:message for="pass"/>
                     </div>
 
                     <ul class="col-12 text-center text-danger nav">
-                        <li class="nav-item pb-2">
-                            <h:messages globalOnly="true" showDetail="true" class="nav-link p-2"/>
+                        <li class="nav-item pb-2 w-100">
+                            <h:messages globalOnly="true" showDetail="true" class="nav-link p-2 w-100 m-2" style="background-color: #F7C7C7;"/>
                         </li>
                     </ul>
 

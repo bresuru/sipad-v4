@@ -378,7 +378,7 @@ public class mailController implements Serializable {
             //Cuerpo del mensaja body:
             //encabezado
             header = "<header style=\"background-color: rgb(15,121,111); padding: 10px; width: 100%; color: white; text-align: center; \" class=\"container bg-danger p-3\">"
-                    + "<img style=\"width: 8%;\" src=" + imgUrl + ">"
+                    + "<img style=\"width: 100px;\" src=" + imgUrl + ">"
                     + "<h2>"
                     + "Club Deportivo Bocaneiros"
                     + "</h2>"
