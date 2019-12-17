@@ -7,7 +7,7 @@
 
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>INGRESAR</title>
+        <title>Bocaneiros - Recuperar contraseña</title>
     </h:head>
 
     <!-- Estilos css -->
@@ -69,49 +69,51 @@
                 <!-- Titulo de login -->
                 <div class="col-12 text-center pt-4">
                     <h1 class="fuenteTxt lineaTxt pb-4">
-                        #{textSupp.iniciarS}
+                        #{textSupp.Contrasena}
                     </h1>
                 </div>
 
                 <!-- Formulario de inicio de sesion -->
-                <h:form class="was-validated p-5">
+                <h:form class="was-validated pl-5 pt-2 pr-5">
+                                                 
+                    <!-- Mensaje de estado del correo -->
+                    <ul class="col-12 text-center text-white nav row">
+                        <li class="nav-item pb-2 col-12">
+                            <h:messages globalOnly="true" showDetail="true" class="nav-link btn text-white p-2 bg-secondary m-1 w-75 mx-auto"/>
+                        </li>
+                    </ul>
 
                     <!-- Documento del usuario -->
                     <div class="form-group row">
-                        <h:outputLabel value="#{textSupp.documentoI}" for="doc"/>                                                
+                        <h:outputLabel value="#{textSupp.correo}" for="doc"/>                                                
                         <h:inputText class="form-control w-100" id="usuario" 
-                                     value="#{loginController.login.usuario}"  a:pattern="[0-9]{7,9}" required="true"/>
+                                     value="#{mailController.correo.para}" a:type="email"  a:pattern="{8,30}" required="true"/>
                         <h:message for="usuario"/>
                     </div>
 
                     <!-- Contraseña del usuario -->
                     <div class="form-group row">
-                        <h:outputLabel value="#{textSupp.contasema}" for="pass"/>
-                        <h:inputText a:type="password" class="form-control" a:pattern="[A-Za-z0-9]{4,20}" id="pass" 
-                                     value="#{loginController.login.contrasena}"/>
+                        <h:outputLabel value="#{textSupp.documentoI}" for="pass"/>
+                        <h:inputText class="form-control" id="pass" 
+                                     value="#{mailController.usuario.documento}"/>
                         <h:message for="pass"/>
                     </div>
-
-                    <ul class="col-12 text-center text-danger nav">
-                        <li class="nav-item pb-2">
-                            <h:messages globalOnly="true" showDetail="true" class="nav-link p-2"/>
-                        </li>
-                    </ul>
+                    
 
                     <!-- Boton de inicio de session -->
                     <div class="col-12 text-center">
-                        <h:commandLink class="btn btn-primary" value="#{textSupp.iniciarS}"
-                                       action="#{loginController.iniciarSesion()}"
+                        <h:commandLink class="btn btn-primary" value="#{textSupp.enviarCorreo}"
+                                       action="#{mailController.recupararContraseña()}"
                                        />
                     </div>
 
                 </h:form>
 
-                <h:form class="form-group col-12">
+                <h:form class="form-group col-12 pt-5">
                     <ul class="form-check nav">
                         <li class="nav-item active">
-                            <a class="nav-link actual" href="recuperarPass.xhtml">
-                                #{textSupp.olvidePass}
+                            <a class="nav-link actual" href="nuevoLogin.xhtml">
+                                #{textSupp.iniciarS}
                             </a>
                         </li>
                     </ul>

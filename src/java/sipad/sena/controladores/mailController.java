@@ -99,16 +99,15 @@ public class mailController implements Serializable {
 
             //estilos para correos
             BodyPart estilos = new MimeBodyPart();
-            estilos.setContent("<h1>" + correo.getTexto() + "</h1>", "text/html");
+            estilos.setContent(correo.getTexto(), "text/html");
 
-            BodyPart adjunto = new MimeBodyPart();
-            adjunto.setDataHandler(new DataHandler(new FileDataSource("C:/Users/MAGG/Documents/Imagenes/imagenes/bocaneiros.png.png")));
-            adjunto.setFileName(".png");
-
+            // BodyPart adjunto = new MimeBodyPart();
+            //adjunto.setDataHandler(new DataHandler(new FileDataSource("C:/Users/MAGG/Documents/Imagenes/imagenes/bocaneiros.png.png")));
+            //adjunto.setFileName(".png");
             //creeo el multipart
             Multipart multi = new MimeMultipart();
             multi.addBodyPart(estilos);
-            multi.addBodyPart(adjunto);
+            // multi.addBodyPart(adjunto);
 
             //Creo la variable mime
             MimeMessage mm = new MimeMessage(s);
@@ -120,7 +119,7 @@ public class mailController implements Serializable {
             //Asunto del correo
             mm.setSubject(correo.getAsunto());
             //Texto del mensaje
-            mm.setContent(multi, "text/html;");
+            mm.setContent(multi, "text/html; charset=utf-8;");
 
             //Creo la variable transport
             Transport tp = s.getTransport("smtp");
@@ -166,19 +165,18 @@ public class mailController implements Serializable {
 
             //Creo la session
             Session s = Session.getDefaultInstance(p);
-            
+
             //estilos para correos
             BodyPart estilos = new MimeBodyPart();
-            estilos.setContent("<h1>" + correo.getTexto() + "</h1>", "text/html");
+            estilos.setContent(correo.getTexto(), "text/html");
 
-            BodyPart adjunto = new MimeBodyPart();
-            adjunto.setDataHandler(new DataHandler(new FileDataSource("C:/Users/MAGG/Documents/Imagenes/imagenes/bocaneiros.png.png")));
-            adjunto.setFileName(".png");
-
+            //BodyPart adjunto = new MimeBodyPart();
+            //adjunto.setDataHandler(new DataHandler(new FileDataSource("C:/Users/MAGG/Documents/Imagenes/imagenes/bocaneiros.png.png")));
+            //adjunto.setFileName(".png");
             //creeo el multipart
             Multipart multi = new MimeMultipart();
             multi.addBodyPart(estilos);
-            multi.addBodyPart(adjunto);
+            //multi.addBodyPart(adjunto);
 
             //Creo la variable mime
             MimeMessage mm = new MimeMessage(s);
@@ -197,7 +195,7 @@ public class mailController implements Serializable {
             //Asunto del correo
             mm.setSubject(correo.getAsunto());
             //Texto del mensaje
-            mm.setContent(multi);
+            mm.setContent(multi, "text/html; charset=utf-8;");
 
             //Creo la variable transport
             Transport tp = s.getTransport("smtp");
@@ -254,9 +252,10 @@ public class mailController implements Serializable {
                 correo.setAsunto("Recuperacion de contraseña");
 
                 //Modidico el texto del correo
-                String text;
-                text = "Se ha modificado la contraseña de su usuario " + l.getUsuario() + " Su nuevo contraseña para poder ingresar es: " + nueva;
-                correo.setTexto(text);
+                String mensaje;
+                mensaje = "Se ha modificado la contraseña de su usuario " + l.getUsuario() + " Su nuevo contraseña para poder ingresar es: " + nueva;
+                mensaje = estiloCorreo(mensaje);
+                correo.setTexto(mensaje);
 
                 //Envio el correo al usuario
                 this.correo();
@@ -285,6 +284,8 @@ public class mailController implements Serializable {
 
             lista = usuarioFacadeLocal.findAll();
 
+            correo.setTexto(estiloCorreo(correo.getTexto()));
+
             correoMasivo(lista);
 
         } catch (Exception e) {
@@ -301,6 +302,8 @@ public class mailController implements Serializable {
         try {
 
             lista = usuarioFacadeLocal.fintTipoUser(2, 1);
+
+            correo.setTexto(estiloCorreo(correo.getTexto()));
 
             correoMasivo(lista);
 
@@ -319,6 +322,8 @@ public class mailController implements Serializable {
 
             lista = usuarioFacadeLocal.fintTipoUser(1, 1);
 
+            correo.setTexto(estiloCorreo(correo.getTexto()));
+
             correoMasivo(lista);
 
         } catch (Exception e) {
@@ -336,11 +341,82 @@ public class mailController implements Serializable {
 
             lista = usuarioFacadeLocal.fintTipoUser(3, 1);
 
+            correo.setTexto(estiloCorreo(correo.getTexto()));
+            
             correoMasivo(lista);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+
+    //estilos de correo pricinpal
+    public String estiloCorreo(String mensaje) {
+
+        String men = null;
+
+        String head;
+        String body;
+        String html;
+
+        String header;
+        String footer;
+        String main;
+
+        String container;
+        String img;
+        String imgUrl = "https://arrayanesfutbol.com/wp-content/uploads/2019/03/bocaneiros.png.png";
+
+        try {
+
+            //El head del html
+            head = "<head>"
+                    + "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>"
+                    + "<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\" integrity=\"sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh\" crossorigin=\"anonymous\">"
+                    + "</head>";
+
+            //Cuerpo del mensaja body:
+            //encabezado
+            header = "<header style=\"background-color: rgb(15,121,111); padding: 10px; width: 100%; color: white; text-align: center; \" class=\"container bg-danger p-3\">"
+                    + "<img style=\"width: 8%;\" src=" + imgUrl + ">"
+                    + "<h2>"
+                    + "Club Deportivo Bocaneiros"
+                    + "</h2>"
+                    + "</header>";
+            //Mensaje principal
+            main = "<div style=\"background-color: rgb(250,250,250); width: 100%; padding: 10px;\">"
+                    + "<h4>"
+                    + mensaje
+                    + "</h4>"
+                    + "</div>";
+
+            //pie de pagina/footer.
+            footer = "<footer style=\"background-color: rgb(15,121,111); padding: 10px; width: 100%; color: white; text-align: center;\">"
+                    + "<h5>"
+                    + "@ClubDeportivoBocaneiros"
+                    + "<br/>"
+                    + "#ClubDeportivoBocaneiros"
+                    + "</h5>"
+                    + "</footer>";
+
+            //los guardo en el body
+            container = "<div style=\"margin: auto; width: 70%\">" + header + main + footer + "</div>";
+            body = "<body style=\"background: rgb(220,220,220); padding: 5px;\">"
+                    + container
+                    + "</body>";
+
+            //Armar el mensaje:
+            html = "<!DOCTYPE html><html>" + head + body + "</html>";
+
+            //Guardo todo en el mensaje
+            men = html;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return men;
 
     }
 
