@@ -1315,42 +1315,50 @@ public class usuariosController {
             if (user != null) {
 
                 torneos = torneosFacadeLocal.find(idTorn);
-                
+
                 listarAT = alumnoTFL.findAll();
-                
+
+                int idTorneo = 0;
+                int idAlumno = 0;
+
+                alumno = alumnoFL.findAlumno(user.getDocumento());
+
                 //Busco si el alumno ya esta inscripto en el torneo
                 for (AlumnoHasTorneo alumnoHasTorneo : listarAT) {
+                    idTorneo = alumnoHasTorneo.getTorneoIdTorneo().getIdTorneo();
+
                     //Busco el id del alumno en la tabla de alumnohastorneo
-                    if (alumnoHasTorneo.getAlumnoIdAlumno().getIdAlumno() == user.getDocumento()) {
+                    if (idTorneo == idTorn) {
+                        idAlumno = alumnoHasTorneo.getIdAlumnTorn();
                         //Verifico si el id del torneo es el mimos al que se va a incribir
-                        if (alumnoHasTorneo.getTorneoIdTorneo().getIdTorneo() == torneos.getIdTorneo()) {
-                            alumnoT = alumnoHasTorneo;
+                        if (idAlumno == alumno.getIdAlumno()) {
+                            aht = alumnoTFL.findAlumnoTorneo(alumno.getIdAlumno(), torneos.getIdTorneo());
                         }
                     }
                 }
-                
+
                 //verifico si el alumno estaba ya en untorneo
-                if (alumnoT.getAlumnoIdAlumno() != null) {
-                    
+                if (aht == null) {
+
                     //inicalizo la variable de alumnoHasTorneo
                     aht = new AlumnoHasTorneo();
-                    
+
                     //registro al alumno al torneo
                     aht.setTorneoIdTorneo(torneos);
                     alumno = alumnoFL.findAlumno(user.getDocumento());
                     aht.setAlumnoIdAlumno(alumno);
-                    
+
                     //creo el registro en la tabla alumno has torneo
                     alumnoTFL.create(aht);
-                    
+
                     //Creo el mensaje de aviso
-                    FacesContext.getCurrentInstance().addMessage(null, 
-                            new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso: ","Se inscribio exitosamente en el toreno " + torneos.getNombreTorneo()));
-                    
+                    FacesContext.getCurrentInstance().addMessage(null,
+                            new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso: ", "Se inscribio exitosamente en el toreno " + torneos.getNombreTorneo()));
+
                 } else {
                     //Creo el mensaje de aviso
-                    FacesContext.getCurrentInstance().addMessage(null, 
-                            new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso: ","Ya se encuentra inscrito en el torneo"));
+                    FacesContext.getCurrentInstance().addMessage(null,
+                            new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso: ", "Ya se encuentra inscrito en el torneo"));
                 }
 
             } else {

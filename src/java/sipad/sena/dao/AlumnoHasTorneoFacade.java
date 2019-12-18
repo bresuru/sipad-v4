@@ -67,4 +67,31 @@ public class AlumnoHasTorneoFacade extends AbstractFacade<AlumnoHasTorneo> imple
         return lista;
     }
 
+    @Override
+    public AlumnoHasTorneo findAlumnoTorneo(int idAlumno, int idTorneo) {
+
+        AlumnoHasTorneo aht = null;
+        List<AlumnoHasTorneo> listaaht = null;
+
+        try {
+
+            Query query = em.createQuery("SELECT at FROM AlumnoHasTorneo at WHERE at.alumnoIdAlumno.idAlumno = :idAlumno AND at.torneoIdTorneo.idTorneo = :idTorneo");
+
+            query.setParameter("idAlumno", idAlumno);
+            query.setParameter("idTorneo", idTorneo);
+
+            listaaht = query.getResultList();
+
+            while (!listaaht.isEmpty()) {
+                aht = listaaht.get(0);
+            }
+
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return aht;
+
+    }
+
 }

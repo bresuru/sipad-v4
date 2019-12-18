@@ -33,5 +33,7 @@ public interface AlumnoHasTorneoFacadeLocal {
     void removeAlumno(Object alumno);
 
     List<AlumnoHasTorneo> findAlumnoT(Object alumno);
+    
+    AlumnoHasTorneo findAlumnoTorneo(int idAlumno, int idTorneo);
 
 }
