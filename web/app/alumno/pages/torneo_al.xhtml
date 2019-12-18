@@ -97,19 +97,30 @@
             </nav>
 
             <!-- Informaion del deportista -->
-            <div class="row">
+            <div class="col-12">
 
                 <h1 class="col-12 text-success text-center">
                     Torneos actuales
                 </h1>
 
+                <ul class="col-12">
+
+                    <li class="nav-item">
+                        <h:messages globalOnly="true" showDetail="true"
+                                    class="bg-aviso-red text-danger p-3" />
+                    </li>
+
+                    <h:messages globalOnly="true" showDetail="true"
+                                class="bg-success text-danger p-3" for="acept"/>
+
+                </ul>
 
                 <c:forEach var="listaT" items="#{usuariosController.buscarTorneos()}">
 
                     <div class="row card mb-3 mt-2 mx-auto bg-light">
                         <div class="row no-gutters">
                             <div class="col-md-4">
-                                <img src="../../../resources/images/fondo_batalla.jpg" class="card-img" alt="..."/>
+                                <h:graphicImage value="#{listaT.imagenTorneo}" class="card-img img-torn" alt="..."/>
                             </div>
                             <div class="col-md-4">
                                 <div class="card-body">
@@ -135,10 +146,14 @@
                                     <p class="card-text">Juvenil</p>
                                     <h5 class="card-title">Estado del torneo: </h5>
                                     <p class="card-text">Abierto</p>
-                                    <h:form class="justify-content-end row mt-5 pt-5 pr-5">
-                                        <h:commandButton value="#{textSupp.inscripbirse}" actionListener="#{usuariosController.torneoInscripbion()}" 
-                                                         class="btn btn-warning mr-3" />
+                                    <h:form class="justify-content-end row mt-5 pt-5 pr-5">      
+                                        <!-- Mas informaciond del torneo -->
                                         <a href="../pagina_error_deportista.html" class="btn btn-primary">Leer mas</a>
+
+                                        <!-- Boton de inscribirse en el torneo -->
+                                        <h:commandButton value="#{textSupp.inscripbirse}" 
+                                                         actionListener="#{usuariosController.torneoInscription(listaT.idTorneo)}" 
+                                                         class="btn btn-success ml-3" />
                                     </h:form>
                                 </div>
                             </div>

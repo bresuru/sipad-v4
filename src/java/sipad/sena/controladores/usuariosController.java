@@ -78,11 +78,9 @@ public class usuariosController {
     private EpsFacadeLocal epsFL;
     private Eps eps;
     private List<Eps> epsL;
-    
+
     private LugarTorneoFacadeLocal lugarTorneoFacadeLocal;
     private LugarTorneo lugarTorneo;
-    
-    
 
     @EJB
     private TorneoFacadeLocal torneosFacadeLocal;
@@ -107,7 +105,7 @@ public class usuariosController {
         eps = new Eps();
         torneos = new Torneo();
         lugarTorneo = new LugarTorneo();
-        
+
         listaTipoDoc = tipoDocFL.findAll();
         listaTipoSangre = tipoSangreFL.findAll();
         categoriaL = categoriaFL.findAll();
@@ -1304,11 +1302,61 @@ public class usuariosController {
     }
 
     //torneos
-    public void torneoInscripbion() {
+    public void torneoInscription(int idTorn) {
+
+        Usuario user = null;
+        List<AlumnoHasTorneo> listarAT = null;
+        AlumnoHasTorneo aht = null;
 
         try {
 
-            usuarios = usuariosFL.find(79666596);
+            user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+
+            if (user != null) {
+
+                torneos = torneosFacadeLocal.find(idTorn);
+                
+                listarAT = alumnoTFL.findAll();
+                
+                //Busco si el alumno ya esta inscripto en el torneo
+                for (AlumnoHasTorneo alumnoHasTorneo : listarAT) {
+                    //Busco el id del alumno en la tabla de alumnohastorneo
+                    if (alumnoHasTorneo.getAlumnoIdAlumno().getIdAlumno() == user.getDocumento()) {
+                        //Verifico si el id del torneo es el mimos al que se va a incribir
+                        if (alumnoHasTorneo.getTorneoIdTorneo().getIdTorneo() == torneos.getIdTorneo()) {
+                            alumnoT = alumnoHasTorneo;
+                        }
+                    }
+                }
+                
+                //verifico si el alumno estaba ya en untorneo
+                if (alumnoT.getAlumnoIdAlumno() != null) {
+                    
+                    //inicalizo la variable de alumnoHasTorneo
+                    aht = new AlumnoHasTorneo();
+                    
+                    //registro al alumno al torneo
+                    aht.setTorneoIdTorneo(torneos);
+                    alumno = alumnoFL.findAlumno(user.getDocumento());
+                    aht.setAlumnoIdAlumno(alumno);
+                    
+                    //creo el registro en la tabla alumno has torneo
+                    alumnoTFL.create(aht);
+                    
+                    //Creo el mensaje de aviso
+                    FacesContext.getCurrentInstance().addMessage(null, 
+                            new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso: ","Se inscribio exitosamente en el toreno " + torneos.getNombreTorneo()));
+                    
+                } else {
+                    //Creo el mensaje de aviso
+                    FacesContext.getCurrentInstance().addMessage(null, 
+                            new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso: ","Ya se encuentra inscrito en el torneo"));
+                }
+
+            } else {
+                loginController verificarL = new loginController();
+                verificarL.verificarSession1();
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -1331,5 +1379,4 @@ public class usuariosController {
         return torneos;
     }
 
-    
 }
